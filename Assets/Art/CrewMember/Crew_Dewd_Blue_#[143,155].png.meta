@@ -1,0 +1,1664 @@
+fileFormatVersion: 2
+guid: 9eee476c420bc4e9d890ac41bbb2ab70
+timeCreated: 1454274769
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Crew_Dewd_Blue_#[143,155]_0
+    21300002: Crew_Dewd_Blue_#[143,155]_1
+    21300004: Crew_Dewd_Blue_#[143,155]_2
+    21300006: Crew_Dewd_Blue_#[143,155]_3
+    21300008: Crew_Dewd_Blue_#[143,155]_4
+    21300010: Crew_Dewd_Blue_#[143,155]_5
+    21300012: Crew_Dewd_Blue_#[143,155]_6
+    21300014: Crew_Dewd_Blue_#[143,155]_7
+    21300016: Crew_Dewd_Blue_#[143,155]_8
+    21300018: Crew_Dewd_Blue_#[143,155]_9
+    21300020: Crew_Dewd_Blue_#[143,155]_10
+    21300022: Crew_Dewd_Blue_#[143,155]_11
+    21300024: Crew_Dewd_Blue_#[143,155]_12
+    21300026: Crew_Dewd_Blue_#[143,155]_13
+    21300028: Crew_Dewd_Blue_#[143,155]_14
+    21300030: Crew_Dewd_Blue_#[143,155]_15
+    21300032: Crew_Dewd_Blue_#[143,155]_16
+    21300034: Crew_Dewd_Blue_#[143,155]_17
+    21300036: Crew_Dewd_Blue_#[143,155]_18
+    21300038: Crew_Dewd_Blue_#[143,155]_19
+    21300040: Crew_Dewd_Blue_#[143,155]_20
+    21300042: Crew_Dewd_Blue_#[143,155]_21
+    21300044: Crew_Dewd_Blue_#[143,155]_22
+    21300046: Crew_Dewd_Blue_#[143,155]_23
+    21300048: Crew_Dewd_Blue_#[143,155]_24
+    21300050: Crew_Dewd_Blue_#[143,155]_25
+    21300052: Crew_Dewd_Blue_#[143,155]_26
+    21300054: Crew_Dewd_Blue_#[143,155]_27
+    21300056: Crew_Dewd_Blue_#[143,155]_28
+    21300058: Crew_Dewd_Blue_#[143,155]_29
+    21300060: Crew_Dewd_Blue_#[143,155]_30
+    21300062: Crew_Dewd_Blue_#[143,155]_31
+    21300064: Crew_Dewd_Blue_#[143,155]_32
+    21300066: Crew_Dewd_Blue_#[143,155]_33
+    21300068: Crew_Dewd_Blue_#[143,155]_34
+    21300070: Crew_Dewd_Blue_#[143,155]_35
+    21300072: Crew_Dewd_Blue_#[143,155]_36
+    21300074: Crew_Dewd_Blue_#[143,155]_37
+    21300076: Crew_Dewd_Blue_#[143,155]_38
+    21300078: Crew_Dewd_Blue_#[143,155]_39
+    21300080: Crew_Dewd_Blue_#[143,155]_40
+    21300082: Crew_Dewd_Blue_#[143,155]_41
+    21300084: Crew_Dewd_Blue_#[143,155]_42
+    21300086: Crew_Dewd_Blue_#[143,155]_43
+    21300088: Crew_Dewd_Blue_#[143,155]_44
+    21300090: Crew_Dewd_Blue_#[143,155]_45
+    21300092: Crew_Dewd_Blue_#[143,155]_46
+    21300094: Crew_Dewd_Blue_#[143,155]_47
+    21300096: Crew_Dewd_Blue_#[143,155]_48
+    21300098: Crew_Dewd_Blue_#[143,155]_49
+    21300100: Crew_Dewd_Blue_#[143,155]_50
+    21300102: Crew_Dewd_Blue_#[143,155]_51
+    21300104: Crew_Dewd_Blue_#[143,155]_52
+    21300106: Crew_Dewd_Blue_#[143,155]_53
+    21300108: Crew_Dewd_Blue_#[143,155]_54
+    21300110: Crew_Dewd_Blue_#[143,155]_55
+    21300112: Crew_Dewd_Blue_#[143,155]_56
+    21300114: Crew_Dewd_Blue_#[143,155]_57
+    21300116: Crew_Dewd_Blue_#[143,155]_58
+    21300118: Crew_Dewd_Blue_#[143,155]_59
+    21300120: Crew_Dewd_Blue_#[143,155]_60
+    21300122: Crew_Dewd_Blue_#[143,155]_61
+    21300124: Crew_Dewd_Blue_#[143,155]_62
+    21300126: Crew_Dewd_Blue_#[143,155]_63
+    21300128: Crew_Dewd_Blue_#[143,155]_64
+    21300130: Crew_Dewd_Blue_#[143,155]_65
+    21300132: Crew_Dewd_Blue_#[143,155]_66
+    21300134: Crew_Dewd_Blue_#[143,155]_67
+    21300136: Crew_Dewd_Blue_#[143,155]_68
+    21300138: Crew_Dewd_Blue_#[143,155]_69
+    21300140: Crew_Dewd_Blue_#[143,155]_70
+    21300142: Crew_Dewd_Blue_#[143,155]_71
+    21300144: Crew_Dewd_Blue_#[143,155]_72
+    21300146: Crew_Dewd_Blue_#[143,155]_73
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Crew_Dewd_Blue_#[143,155]_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 74.5}
+        - {x: -49.5, y: 53.5}
+        - {x: -51.5, y: 47.5}
+        - {x: -51.5, y: 26.5}
+        - {x: -39.5, y: 12.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 52.5, y: 0.5}
+        - {x: 52.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.5, y: 18.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 14.5, y: -73.5}
+        - {x: 52.5, y: -53.5}
+        - {x: 52.5, y: 74.5}
+        - {x: -45.5, y: 74.5}
+        - {x: -52.5, y: 67.5}
+    - name: Crew_Dewd_Blue_#[143,155]_2
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46.5, y: 51.5}
+        - {x: 39.5, y: 48.5}
+        - {x: 36.5, y: 65.5}
+        - {x: 19.5, y: 73.5}
+        - {x: -52.5, y: 73.5}
+        - {x: -52.5, y: 15.5}
+        - {x: -28.5, y: -73.5}
+        - {x: 13.5, y: -73.5}
+        - {x: 21.5, y: -68.5}
+        - {x: 52.5, y: 13.5}
+        - {x: 52.5, y: 50.5}
+    - name: Crew_Dewd_Blue_#[143,155]_3
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.5, y: 72.5}
+        - {x: -52.5, y: 46.5}
+        - {x: -52.5, y: 11.5}
+        - {x: -13.5, y: -73.5}
+        - {x: 28.5, y: -73.5}
+        - {x: 51.5, y: -40.5}
+        - {x: 51.5, y: 67.5}
+        - {x: 37.5, y: 72.5}
+    - name: Crew_Dewd_Blue_#[143,155]_4
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 43.5, y: 46.5}
+        - {x: 29.5, y: 42.5}
+        - {x: 13.5, y: 69.5}
+        - {x: -34.5, y: 69.5}
+        - {x: -53.5, y: 51.5}
+        - {x: -53.5, y: 9.5}
+        - {x: -22.5, y: -71.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 23.5, y: -73.5}
+        - {x: 26.5, y: -71.5}
+        - {x: 47.5, y: 20.5}
+        - {x: 47.5, y: 44.5}
+    - name: Crew_Dewd_Blue_#[143,155]_5
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.5, y: 67.5}
+        - {x: -24.5, y: 67.5}
+        - {x: -50.5, y: 47.5}
+        - {x: -50.5, y: -15.5}
+        - {x: -28.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 35.5, y: -34.5}
+        - {x: 42.5, y: 12.5}
+        - {x: 42.5, y: 39.5}
+    - name: Crew_Dewd_Blue_#[143,155]_6
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 42.5, y: 44.5}
+        - {x: 34.5, y: 58.5}
+        - {x: 18.5, y: 66.5}
+        - {x: -27.5, y: 66.5}
+        - {x: -49.5, y: 31.5}
+        - {x: -49.5, y: -23.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 13.5, y: -73.5}
+        - {x: 17.5, y: -66.5}
+        - {x: 24.5, y: -35.5}
+        - {x: 42.5, y: -1.5}
+    - name: Crew_Dewd_Blue_#[143,155]_7
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1395
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 66.5}
+        - {x: -49.5, y: 51.5}
+        - {x: -49.5, y: -26.5}
+        - {x: -33.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 42.5, y: -31.5}
+        - {x: 42.5, y: 41.5}
+        - {x: 23.5, y: 66.5}
+    - name: Crew_Dewd_Blue_#[143,155]_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.5, y: 37.5}
+        - {x: 21.5, y: 31.5}
+        - {x: 20.5, y: 24.5}
+        - {x: 19.5, y: 44.5}
+        - {x: 17.5, y: 48.5}
+        - {x: 13.5, y: 65.5}
+        - {x: -24.5, y: 65.5}
+        - {x: -49.5, y: 48.5}
+        - {x: -49.5, y: -36.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 30.5, y: -73.5}
+        - {x: 42.5, y: -42.5}
+        - {x: 42.5, y: 28.5}
+        - {x: 39.5, y: 32.5}
+    - name: Crew_Dewd_Blue_#[143,155]_9
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.5, y: 33.5}
+        - {x: 25.5, y: 37.5}
+        - {x: 19.5, y: 28.5}
+        - {x: 20.5, y: 22.5}
+        - {x: 19.5, y: 29.5}
+        - {x: 24.5, y: 43.5}
+        - {x: 9.5, y: 65.5}
+        - {x: -25.5, y: 65.5}
+        - {x: -50.5, y: 23.5}
+        - {x: -50.5, y: -16.5}
+        - {x: -15.5, y: -73.5}
+        - {x: 11.5, y: -73.5}
+        - {x: 19.5, y: -67.5}
+        - {x: 42.5, y: 5.5}
+        - {x: 42.5, y: 17.5}
+    - name: Crew_Dewd_Blue_#[143,155]_10
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 23.5, y: 34.5}
+        - {x: 19.5, y: 28.5}
+        - {x: 20.5, y: 22.5}
+        - {x: 19.5, y: 30.5}
+        - {x: 23.5, y: 50.5}
+        - {x: 12.5, y: 65.5}
+        - {x: -19.5, y: 65.5}
+        - {x: -36.5, y: 55.5}
+        - {x: -31.5, y: 34.5}
+        - {x: -29.5, y: 22.5}
+        - {x: -28.5, y: 21.5}
+        - {x: -29.5, y: 17.5}
+        - {x: -29.5, y: 22.5}
+        - {x: -33.5, y: 31.5}
+        - {x: -50.5, y: 36.5}
+        - {x: -50.5, y: -27.5}
+        - {x: -40.5, y: -73.5}
+        - {x: 30.5, y: -73.5}
+        - {x: 42.5, y: -0.5}
+        - {x: 42.5, y: 36.5}
+    - name: Crew_Dewd_Blue_#[143,155]_11
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 66.5}
+        - {x: -49.5, y: 29.5}
+        - {x: -49.5, y: -11.5}
+        - {x: -19.5, y: -73.5}
+        - {x: 42.5, y: -73.5}
+        - {x: 42.5, y: 66.5}
+    - name: Crew_Dewd_Blue_#[143,155]_12
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.5, y: 37.5}
+        - {x: 25.5, y: 34.5}
+        - {x: 21.5, y: 31.5}
+        - {x: 20.5, y: 28.5}
+        - {x: 20.5, y: 24.5}
+        - {x: 19.5, y: 37.5}
+        - {x: 20.5, y: 59.5}
+        - {x: 10.5, y: 66.5}
+        - {x: -29.5, y: 66.5}
+        - {x: -49.5, y: 39.5}
+        - {x: -49.5, y: -45.5}
+        - {x: -23.5, y: -73.5}
+        - {x: 24.5, y: -73.5}
+        - {x: 43.5, y: -18.5}
+        - {x: 43.5, y: 28.5}
+    - name: Crew_Dewd_Blue_#[143,155]_13
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 43.5, y: 25.5}
+        - {x: 35.5, y: 41.5}
+        - {x: 23.5, y: 53.5}
+        - {x: 7.5, y: 68.5}
+        - {x: -14.5, y: 68.5}
+        - {x: -16.5, y: 67.5}
+        - {x: -23.5, y: 60.5}
+        - {x: -28.5, y: 52.5}
+        - {x: -28.5, y: 37.5}
+        - {x: -27.5, y: 20.5}
+        - {x: -28.5, y: 29.5}
+        - {x: -29.5, y: 37.5}
+        - {x: -48.5, y: 33.5}
+        - {x: -48.5, y: 9.5}
+        - {x: -43.5, y: 1.5}
+        - {x: -23.5, y: -72.5}
+        - {x: -19.5, y: -73.5}
+        - {x: 14.5, y: -73.5}
+        - {x: 19.5, y: -67.5}
+        - {x: 24.5, y: -32.5}
+        - {x: 43.5, y: -0.5}
+    - name: Crew_Dewd_Blue_#[143,155]_14
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 73.5}
+        - {x: -27.5, y: 70.5}
+        - {x: -44.5, y: 43.5}
+        - {x: -44.5, y: -2.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 19.5, y: -73.5}
+        - {x: 45.5, y: -24.5}
+        - {x: 45.5, y: 44.5}
+        - {x: 23.5, y: 73.5}
+    - name: Crew_Dewd_Blue_#[143,155]_15
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1240
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 77.5}
+        - {x: -40.5, y: 60.5}
+        - {x: -40.5, y: 25.5}
+        - {x: -20.5, y: -70.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 45.5, y: -24.5}
+        - {x: 45.5, y: 68.5}
+        - {x: 41.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 77.5}
+        - {x: -39.5, y: 66.5}
+        - {x: -39.5, y: 26.5}
+        - {x: -17.5, y: -68.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 19.5, y: -73.5}
+        - {x: 47.5, y: 10.5}
+        - {x: 47.5, y: 69.5}
+        - {x: 29.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_17
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.5, y: 77.5}
+        - {x: -38.5, y: 4.5}
+        - {x: -18.5, y: -68.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 29.5, y: -73.5}
+        - {x: 48.5, y: 9.5}
+        - {x: 48.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_18
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28.5, y: 77.5}
+        - {x: -37.5, y: 77.5}
+        - {x: -37.5, y: 16.5}
+        - {x: -20.5, y: -70.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 48.5, y: 46.5}
+        - {x: 48.5, y: 69.5}
+    - name: Crew_Dewd_Blue_#[143,155]_19
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 77.5}
+        - {x: -37.5, y: -8.5}
+        - {x: -24.5, y: -71.5}
+        - {x: -20.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 48.5, y: 41.5}
+        - {x: 48.5, y: 75.5}
+        - {x: 45.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_20
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 77.5}
+        - {x: -37.5, y: 76.5}
+        - {x: -37.5, y: 37.5}
+        - {x: -23.5, y: -71.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 13.5, y: -73.5}
+        - {x: 17.5, y: -66.5}
+        - {x: 49.5, y: 27.5}
+        - {x: 49.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_21
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 77.5}
+        - {x: -37.5, y: 37.5}
+        - {x: -23.5, y: -71.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 26.5, y: -73.5}
+        - {x: 28.5, y: -72.5}
+        - {x: 49.5, y: 36.5}
+        - {x: 49.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_22
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44.5, y: 77.5}
+        - {x: -38.5, y: 77.5}
+        - {x: -38.5, y: -7.5}
+        - {x: -21.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 38.5, y: -28.5}
+        - {x: 49.5, y: 39.5}
+        - {x: 49.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_23
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1085
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 77.5}
+        - {x: -39.5, y: 19.5}
+        - {x: -29.5, y: -71.5}
+        - {x: -27.5, y: -73.5}
+        - {x: 16.5, y: -73.5}
+        - {x: 25.5, y: -70.5}
+        - {x: 49.5, y: 37.5}
+        - {x: 49.5, y: 73.5}
+        - {x: 45.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41.5, y: 77.5}
+        - {x: -40.5, y: 77.5}
+        - {x: -40.5, y: 15.5}
+        - {x: -28.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 20.5, y: -68.5}
+        - {x: 50.5, y: 20.5}
+        - {x: 50.5, y: 67.5}
+    - name: Crew_Dewd_Blue_#[143,155]_25
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51.5, y: 75.5}
+        - {x: -39.5, y: 75.5}
+        - {x: -43.5, y: 71.5}
+        - {x: -43.5, y: 29.5}
+        - {x: -20.5, y: -70.5}
+        - {x: -13.5, y: -73.5}
+        - {x: 14.5, y: -73.5}
+        - {x: 20.5, y: -68.5}
+        - {x: 26.5, y: -21.5}
+        - {x: 51.5, y: 29.5}
+    - name: Crew_Dewd_Blue_#[143,155]_26
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 75.5}
+        - {x: -47.5, y: 71.5}
+        - {x: -47.5, y: 9.5}
+        - {x: -21.5, y: -73.5}
+        - {x: 34.5, y: -73.5}
+        - {x: 53.5, y: 28.5}
+        - {x: 53.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_27
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 75.5}
+        - {x: -53.5, y: 61.5}
+        - {x: -53.5, y: -42.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 51.5, y: -73.5}
+        - {x: 55.5, y: -42.5}
+        - {x: 55.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_28
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24.5, y: -23.5}
+        - {x: 56.5, y: 38.5}
+        - {x: 56.5, y: 62.5}
+        - {x: 53.5, y: 67.5}
+        - {x: 26.5, y: 74.5}
+        - {x: -34.5, y: 74.5}
+        - {x: -58.5, y: 64.5}
+        - {x: -59.5, y: 60.5}
+        - {x: -59.5, y: 45.5}
+        - {x: -46.5, y: 23.5}
+        - {x: -16.5, y: -68.5}
+        - {x: -13.5, y: -73.5}
+        - {x: 14.5, y: -73.5}
+        - {x: 17.5, y: -66.5}
+        - {x: 19.5, y: -45.5}
+        - {x: 23.5, y: -28.5}
+    - name: Crew_Dewd_Blue_#[143,155]_29
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.5, y: 74.5}
+        - {x: -65.5, y: 14.5}
+        - {x: -31.5, y: -73.5}
+        - {x: 36.5, y: -73.5}
+        - {x: 58.5, y: -30.5}
+        - {x: 58.5, y: 73.5}
+        - {x: 57.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_30
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -68.5, y: 74.5}
+        - {x: -68.5, y: -6.5}
+        - {x: -19.5, y: -73.5}
+        - {x: 28.5, y: -73.5}
+        - {x: 53.5, y: -7.5}
+        - {x: 59.5, y: 25.5}
+        - {x: 59.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_31
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 930
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69.5, y: 74.5}
+        - {x: -69.5, y: 7.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 59.5, y: 6.5}
+        - {x: 59.5, y: 73.5}
+        - {x: 58.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: 74.5}
+        - {x: -69.5, y: 69.5}
+        - {x: -69.5, y: 27.5}
+        - {x: -20.5, y: -73.5}
+        - {x: 20.5, y: -73.5}
+        - {x: 49.5, y: -4.5}
+        - {x: 58.5, y: 35.5}
+        - {x: 58.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_33
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 75.5}
+        - {x: -63.5, y: 59.5}
+        - {x: -68.5, y: 56.5}
+        - {x: -68.5, y: 25.5}
+        - {x: -23.5, y: -73.5}
+        - {x: 22.5, y: -73.5}
+        - {x: 55.5, y: 4.5}
+        - {x: 55.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_34
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 42.5, y: 71.5}
+        - {x: 35.5, y: 66.5}
+        - {x: 28.5, y: 52.5}
+        - {x: 11.5, y: 75.5}
+        - {x: -1.5, y: 77.5}
+        - {x: -15.5, y: 77.5}
+        - {x: -20.5, y: 73.5}
+        - {x: -26.5, y: 68.5}
+        - {x: -31.5, y: 59.5}
+        - {x: -61.5, y: 65.5}
+        - {x: -64.5, y: 60.5}
+        - {x: -64.5, y: 30.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 23.5, y: -69.5}
+        - {x: 51.5, y: 57.5}
+        - {x: 51.5, y: 65.5}
+    - name: Crew_Dewd_Blue_#[143,155]_35
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.5, y: 77.5}
+        - {x: -32.5, y: 77.5}
+        - {x: -61.5, y: 62.5}
+        - {x: -61.5, y: -7.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 31.5, y: -73.5}
+        - {x: 43.5, y: -21.5}
+        - {x: 47.5, y: 31.5}
+        - {x: 47.5, y: 70.5}
+    - name: Crew_Dewd_Blue_#[143,155]_36
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.5, y: 77.5}
+        - {x: -55.5, y: 71.5}
+        - {x: -57.5, y: 67.5}
+        - {x: -57.5, y: 31.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 25.5, y: -70.5}
+        - {x: 43.5, y: 29.5}
+        - {x: 43.5, y: 71.5}
+        - {x: 31.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_37
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: 77.5}
+        - {x: -55.5, y: 67.5}
+        - {x: -55.5, y: 38.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 23.5, y: -69.5}
+        - {x: 39.5, y: 9.5}
+        - {x: 39.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_38
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42.5, y: 77.5}
+        - {x: -53.5, y: 67.5}
+        - {x: -53.5, y: 43.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 20.5, y: -73.5}
+        - {x: 25.5, y: -70.5}
+        - {x: 37.5, y: 19.5}
+        - {x: 37.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_39
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 775
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.5, y: 77.5}
+        - {x: -52.5, y: 11.5}
+        - {x: -23.5, y: -73.5}
+        - {x: 19.5, y: -73.5}
+        - {x: 36.5, y: -26.5}
+        - {x: 36.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 77.5}
+        - {x: -51.5, y: -23.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 21.5, y: -73.5}
+        - {x: 22.5, y: -69.5}
+        - {x: 35.5, y: 19.5}
+        - {x: 35.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_41
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 77.5}
+        - {x: -50.5, y: 72.5}
+        - {x: -51.5, y: 70.5}
+        - {x: -51.5, y: 46.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 28.5, y: -73.5}
+        - {x: 35.5, y: 25.5}
+        - {x: 35.5, y: 73.5}
+        - {x: 31.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_42
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5, y: 77.5}
+        - {x: -51.5, y: 67.5}
+        - {x: -51.5, y: 54.5}
+        - {x: -44.5, y: 30.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 21.5, y: -68.5}
+        - {x: 35.5, y: 19.5}
+        - {x: 35.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_43
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.5, y: 77.5}
+        - {x: -34.5, y: 64.5}
+        - {x: -31.5, y: 59.5}
+        - {x: -31.5, y: 50.5}
+        - {x: -31.5, y: 51.5}
+        - {x: -33.5, y: 61.5}
+        - {x: -39.5, y: 69.5}
+        - {x: -50.5, y: 77.5}
+        - {x: -52.5, y: 68.5}
+        - {x: -52.5, y: 25.5}
+        - {x: -20.5, y: -70.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 36.5, y: -28.5}
+        - {x: 36.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_44
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42.5, y: 77.5}
+        - {x: -53.5, y: 70.5}
+        - {x: -53.5, y: 30.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 25.5, y: -70.5}
+        - {x: 37.5, y: 0.5}
+        - {x: 37.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_45
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.5, y: 76.5}
+        - {x: 25.5, y: 77.5}
+        - {x: -31.5, y: 77.5}
+        - {x: -55.5, y: 70.5}
+        - {x: -55.5, y: 40.5}
+        - {x: -21.5, y: -70.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 23.5, y: -69.5}
+        - {x: 40.5, y: 42.5}
+        - {x: 40.5, y: 70.5}
+    - name: Crew_Dewd_Blue_#[143,155]_46
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46.5, y: 77.5}
+        - {x: -57.5, y: 70.5}
+        - {x: -57.5, y: 31.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 23.5, y: -69.5}
+        - {x: 43.5, y: 26.5}
+        - {x: 43.5, y: 77.5}
+    - name: Crew_Dewd_Blue_#[143,155]_47
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 620
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44.5, y: 76.5}
+        - {x: -61.5, y: 60.5}
+        - {x: -61.5, y: 39.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 24.5, y: -73.5}
+        - {x: 47.5, y: -32.5}
+        - {x: 47.5, y: 74.5}
+        - {x: 43.5, y: 76.5}
+    - name: Crew_Dewd_Blue_#[143,155]_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.5, y: 64.5}
+        - {x: 24.5, y: 76.5}
+        - {x: -52.5, y: 76.5}
+        - {x: -64.5, y: 72.5}
+        - {x: -64.5, y: 29.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 22.5, y: -73.5}
+        - {x: 51.5, y: 29.5}
+        - {x: 51.5, y: 69.5}
+        - {x: 39.5, y: 70.5}
+    - name: Crew_Dewd_Blue_#[143,155]_49
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56.5, y: 76.5}
+        - {x: -67.5, y: 73.5}
+        - {x: -67.5, y: 14.5}
+        - {x: -31.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 55.5, y: 37.5}
+        - {x: 55.5, y: 69.5}
+        - {x: 33.5, y: 76.5}
+    - name: Crew_Dewd_Blue_#[143,155]_50
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56.5, y: 75.5}
+        - {x: -68.5, y: 70.5}
+        - {x: -68.5, y: 9.5}
+        - {x: -34.5, y: -73.5}
+        - {x: 33.5, y: -73.5}
+        - {x: 58.5, y: 29.5}
+        - {x: 58.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_51
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: 75.5}
+        - {x: -68.5, y: 72.5}
+        - {x: -68.5, y: 9.5}
+        - {x: -30.5, y: -73.5}
+        - {x: 25.5, y: -73.5}
+        - {x: 28.5, y: -71.5}
+        - {x: 60.5, y: 34.5}
+        - {x: 60.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_52
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -67.5, y: 75.5}
+        - {x: -67.5, y: 13.5}
+        - {x: -36.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 60.5, y: 37.5}
+        - {x: 60.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_53
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40.5, y: 75.5}
+        - {x: -59.5, y: 62.5}
+        - {x: -64.5, y: 54.5}
+        - {x: -64.5, y: 47.5}
+        - {x: -44.5, y: 19.5}
+        - {x: -19.5, y: -73.5}
+        - {x: 21.5, y: -73.5}
+        - {x: 59.5, y: 2.5}
+        - {x: 59.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_54
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55.5, y: 75.5}
+        - {x: -59.5, y: 71.5}
+        - {x: -59.5, y: -51.5}
+        - {x: -30.5, y: -73.5}
+        - {x: 55.5, y: -73.5}
+        - {x: 56.5, y: -65.5}
+        - {x: 56.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_55
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 465
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 36.5, y: 75.5}
+        - {x: -38.5, y: 75.5}
+        - {x: -55.5, y: 70.5}
+        - {x: -55.5, y: 35.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 11.5, y: -73.5}
+        - {x: 19.5, y: -67.5}
+        - {x: 53.5, y: 41.5}
+        - {x: 53.5, y: 68.5}
+    - name: Crew_Dewd_Blue_#[143,155]_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46.5, y: 70.5}
+        - {x: 32.5, y: 75.5}
+        - {x: -38.5, y: 75.5}
+        - {x: -51.5, y: 68.5}
+        - {x: -51.5, y: 28.5}
+        - {x: -19.5, y: -70.5}
+        - {x: -12.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 20.5, y: -68.5}
+        - {x: 49.5, y: 31.5}
+        - {x: 49.5, y: 65.5}
+    - name: Crew_Dewd_Blue_#[143,155]_57
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45.5, y: 75.5}
+        - {x: -48.5, y: 71.5}
+        - {x: -48.5, y: 14.5}
+        - {x: -17.5, y: -68.5}
+        - {x: -15.5, y: -73.5}
+        - {x: 13.5, y: -73.5}
+        - {x: 23.5, y: -69.5}
+        - {x: 47.5, y: 10.5}
+        - {x: 47.5, y: 71.5}
+        - {x: 36.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_58
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.5, y: 75.5}
+        - {x: -25.5, y: 75.5}
+        - {x: -42.5, y: 67.5}
+        - {x: -46.5, y: 65.5}
+        - {x: -46.5, y: 36.5}
+        - {x: -20.5, y: -73.5}
+        - {x: 19.5, y: -73.5}
+        - {x: 24.5, y: -70.5}
+        - {x: 45.5, y: 26.5}
+        - {x: 45.5, y: 67.5}
+        - {x: 43.5, y: 72.5}
+    - name: Crew_Dewd_Blue_#[143,155]_59
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35.5, y: 75.5}
+        - {x: -44.5, y: 75.5}
+        - {x: -44.5, y: 12.5}
+        - {x: -16.5, y: -73.5}
+        - {x: 12.5, y: -73.5}
+        - {x: 20.5, y: -68.5}
+        - {x: 44.5, y: 42.5}
+        - {x: 44.5, y: 70.5}
+    - name: Crew_Dewd_Blue_#[143,155]_60
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.5, y: 75.5}
+        - {x: -32.5, y: 75.5}
+        - {x: -43.5, y: 67.5}
+        - {x: -43.5, y: 45.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 14.5, y: -73.5}
+        - {x: 22.5, y: -69.5}
+        - {x: 43.5, y: 18.5}
+        - {x: 43.5, y: 72.5}
+    - name: Crew_Dewd_Blue_#[143,155]_61
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 75.5}
+        - {x: -43.5, y: 68.5}
+        - {x: -43.5, y: 32.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 43.5, y: -24.5}
+        - {x: 43.5, y: 75.5}
+    - name: Crew_Dewd_Blue_#[143,155]_62
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 74.5}
+        - {x: -19.5, y: 65.5}
+        - {x: -22.5, y: 60.5}
+        - {x: -23.5, y: 64.5}
+        - {x: -33.5, y: 74.5}
+        - {x: -43.5, y: 74.5}
+        - {x: -43.5, y: -15.5}
+        - {x: -17.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 43.5, y: 28.5}
+        - {x: 43.5, y: 73.5}
+        - {x: 40.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_63
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 310
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 44.5, y: 64.5}
+        - {x: 31.5, y: 70.5}
+        - {x: 15.5, y: 74.5}
+        - {x: -13.5, y: 74.5}
+        - {x: -23.5, y: 64.5}
+        - {x: -24.5, y: 51.5}
+        - {x: -24.5, y: 48.5}
+        - {x: -23.5, y: 41.5}
+        - {x: -24.5, y: 50.5}
+        - {x: -25.5, y: 55.5}
+        - {x: -27.5, y: 62.5}
+        - {x: -30.5, y: 67.5}
+        - {x: -43.5, y: 65.5}
+        - {x: -43.5, y: 52.5}
+        - {x: -42.5, y: 42.5}
+        - {x: -38.5, y: 25.5}
+        - {x: -15.5, y: -73.5}
+        - {x: 15.5, y: -73.5}
+        - {x: 20.5, y: -68.5}
+        - {x: 42.5, y: 26.5}
+        - {x: 44.5, y: 45.5}
+    - name: Crew_Dewd_Blue_#[143,155]_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 74.5}
+        - {x: -45.5, y: 69.5}
+        - {x: -45.5, y: 25.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 20.5, y: -73.5}
+        - {x: 45.5, y: -12.5}
+        - {x: 45.5, y: 71.5}
+        - {x: 40.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_65
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.5, y: 74.5}
+        - {x: -42.5, y: 74.5}
+        - {x: -48.5, y: 68.5}
+        - {x: -48.5, y: 23.5}
+        - {x: -18.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 38.5, y: -26.5}
+        - {x: 48.5, y: 28.5}
+        - {x: 48.5, y: 67.5}
+    - name: Crew_Dewd_Blue_#[143,155]_66
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33.5, y: 49.5}
+        - {x: 17.5, y: 73.5}
+        - {x: 13.5, y: 74.5}
+        - {x: -14.5, y: 74.5}
+        - {x: -27.5, y: 68.5}
+        - {x: -50.5, y: 53.5}
+        - {x: -50.5, y: -36.5}
+        - {x: -19.5, y: -73.5}
+        - {x: 25.5, y: -73.5}
+        - {x: 50.5, y: 35.5}
+        - {x: 50.5, y: 51.5}
+        - {x: 39.5, y: 56.5}
+    - name: Crew_Dewd_Blue_#[143,155]_67
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: 74.5}
+        - {x: -51.5, y: 63.5}
+        - {x: -51.5, y: 17.5}
+        - {x: -20.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 51.5, y: 10.5}
+        - {x: 51.5, y: 60.5}
+        - {x: 21.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_68
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.5, y: 74.5}
+        - {x: -43.5, y: 74.5}
+        - {x: -51.5, y: 62.5}
+        - {x: -51.5, y: 26.5}
+        - {x: -48.5, y: 12.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 11.5, y: -73.5}
+        - {x: 19.5, y: -67.5}
+        - {x: 52.5, y: 15.5}
+        - {x: 52.5, y: 59.5}
+    - name: Crew_Dewd_Blue_#[143,155]_69
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28.5, y: 33.5}
+        - {x: 25.5, y: 55.5}
+        - {x: 19.5, y: 74.5}
+        - {x: -15.5, y: 74.5}
+        - {x: -22.5, y: 65.5}
+        - {x: -51.5, y: 60.5}
+        - {x: -51.5, y: 4.5}
+        - {x: -24.5, y: -73.5}
+        - {x: 28.5, y: -73.5}
+        - {x: 52.5, y: 22.5}
+        - {x: 52.5, y: 57.5}
+        - {x: 39.5, y: 51.5}
+    - name: Crew_Dewd_Blue_#[143,155]_70
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 74.5}
+        - {x: -51.5, y: 2.5}
+        - {x: -31.5, y: -73.5}
+        - {x: 18.5, y: -73.5}
+        - {x: 52.5, y: -7.5}
+        - {x: 52.5, y: 57.5}
+        - {x: 31.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_71
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 155
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 74.5}
+        - {x: -49.5, y: 53.5}
+        - {x: -51.5, y: 47.5}
+        - {x: -51.5, y: 26.5}
+        - {x: -39.5, y: 12.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 52.5, y: 0.5}
+        - {x: 52.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 74.5}
+        - {x: -49.5, y: 53.5}
+        - {x: -51.5, y: 47.5}
+        - {x: -51.5, y: 26.5}
+        - {x: -39.5, y: 12.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 52.5, y: 0.5}
+        - {x: 52.5, y: 74.5}
+    - name: Crew_Dewd_Blue_#[143,155]_73
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 0
+        width: 143
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 74.5}
+        - {x: -49.5, y: 53.5}
+        - {x: -51.5, y: 47.5}
+        - {x: -51.5, y: 26.5}
+        - {x: -39.5, y: 12.5}
+        - {x: -14.5, y: -73.5}
+        - {x: 17.5, y: -73.5}
+        - {x: 52.5, y: 0.5}
+        - {x: 52.5, y: 74.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
