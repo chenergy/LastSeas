@@ -26,6 +26,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour 
 {
     /// <summary>
+    /// The database containing references to objects needed to load during runtime.
+    /// </summary>
+//    public Database m_database;
+
+    /// <summary>
     /// The instance of the GameManager, available statically.
     /// </summary>
     private static GameManager m_instance = null;
@@ -60,6 +65,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Start()
     {
+//        Debug.Log(m_database.GetCharacterData(CharacterName.BOB).m_name);
+//        SavedData.LastSavedData.Load();
+//        Debug.Log(SavedData.LastSavedData.GetCharacterSavedData(CharacterName.BOB).m_experience);
+//        SavedData.LastSavedData.UpdateCharacterData(CharacterName.BOB, 100, 10, 10);
+        SavedData.Save();
+//        Debug.Log(Database.Instance.GetCharacterData(CharacterName.PICARD).m_name);
     }
 
     /// <summary>

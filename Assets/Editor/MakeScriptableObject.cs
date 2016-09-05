@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Character.cs" company="Jonathan Chien">
+// <copyright file="MakeScriptableObject.cs" company="Jonathan Chien">
 //
 // Copyright 2016 Jonathan Chien. All Rights Reserved.
 //
@@ -18,46 +18,23 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
-public class Attack : MonoBehaviour
+/// <summary>
+/// In editor menu items to create scriptable objects.
+/// </summary>
+public class MakeScriptableObject : MonoBehaviour 
 {
     /// <summary>
-    /// Use this for initialization.
+    /// Helper method to create database object.
     /// </summary>
-    public void Start()
-    {
-    }
-
-    /// <summary>
-    /// Update is called once per frame.
-    /// </summary>
-    public void Update()
-    {
-    }
-
-    public void UseAttack()
-    {
-        StartCoroutine(_UseAttackRoutine());
-    }
-
-    private IEnumerator _UseAttackRoutine()
-    {
-        int moves = 0;
-        while (true)
-        {
-            yield return null;
-            transform.position += transform.forward * 0.01f;
-
-            moves++;
-
-            if (moves > 100)
-            {
-                break;
-            }
-        }
-
-        Debug.Log("done");
-    }
+	[MenuItem ("Assets/Create/DatabaseScriptableObject")]
+	public static void CreateDatabase (){
+        Database asset = ScriptableObject.CreateInstance <Database> ();
+		AssetDatabase.CreateAsset (asset, "Assets/Data/Database.asset");
+		AssetDatabase.SaveAssets ();
+		EditorUtility.FocusProjectWindow ();
+		Selection.activeObject = asset;
+	}
 }
-
