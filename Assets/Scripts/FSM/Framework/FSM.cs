@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Enemy.cs" company="Jonathan Chien">
+// <copyright file="FSM.cs" company="Jonathan Chien">
 //
 // Copyright 2016 Jonathan Chien. All Rights Reserved.
 //
@@ -17,13 +17,24 @@
 //
 // </copyright>
 //-----------------------------------------------------------------------
-using UnityEngine;
-using System.Collections;
+using System;
 
-/// <summary>
-/// Enemy airship in the scene.
-/// </summary>
-public class Enemy : Airship
+namespace FSM
 {
+    /// <summary>
+    /// Finite state machine static class to create an instance of a context.
+    /// </summary>
+    public static class FSM
+    {
+        /// <summary>
+        /// Create an instance of FSM.
+        /// </summary>
+        /// <returns>The FSM instance.</returns>
+        /// <param name="startState">Start state.</param>
+        /// <param name="initAction">Init action.</param>
+        public static FSMContext CreateFSMInstance(FSMState startState, FSMAction initAction)
+        {
+            return new FSMContext(startState, initAction);
+        }
+    }
 }
-

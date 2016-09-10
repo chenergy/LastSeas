@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Enemy.cs" company="Jonathan Chien">
+// <copyright file="FSMAction.cs" company="Jonathan Chien">
 //
 // Copyright 2016 Jonathan Chien. All Rights Reserved.
 //
@@ -17,13 +17,25 @@
 //
 // </copyright>
 //-----------------------------------------------------------------------
-using UnityEngine;
-using System.Collections;
+using System;
 
-/// <summary>
-/// Enemy airship in the scene.
-/// </summary>
-public class Enemy : Airship
+namespace FSM
 {
-}
+//    /// <summary>
+//    /// An action that can be performed in the FSM.
+//    /// </summary>
+//    public abstract class FSMAction
+//    {
+//        /// <summary>
+//        /// Execute the method within the given context.
+//        /// </summary>
+//        /// <param name="c">FSM context.</param>
+//        /// <param name="list">List of parameters.</param>
+//        public abstract void Execute(FSMContext context, params object[] list);
+//    }
 
+    /// <summary>
+    /// An action that can be performed in the FSM.
+    /// </summary>
+    public delegate void FSMAction(FSMContext context, params object[] list);
+}

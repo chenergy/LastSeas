@@ -88,4 +88,5 @@ public class CharacterData
     public int m_baseAttack;
     public int m_baseDefense;
     public int m_baseSpeed;
+    public int m_baseMovement;
 }

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Enemy.cs" company="Jonathan Chien">
+// <copyright file="UISelectionMenu.cs" company="Jonathan Chien">
 //
 // Copyright 2016 Jonathan Chien. All Rights Reserved.
 //
@@ -20,10 +20,19 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Enemy airship in the scene.
-/// </summary>
-public class Enemy : Airship
+public class UIBattleSelectionMenu : MonoBehaviour
 {
+
+    // Use this for initialization
+    void Start ()
+    {
+	
+    }
+	
+    // Update is called once per frame
+    void Update ()
+    {
+	
+    }
 }
 

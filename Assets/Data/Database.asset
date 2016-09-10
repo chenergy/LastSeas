@@ -20,6 +20,7 @@ MonoBehaviour:
     m_baseAttack: 1
     m_baseDefense: 1
     m_baseSpeed: 1
+    m_baseMovement: 1
   - m_name: William Riker
     m_unlocked: 1
     m_icon: {fileID: 21300000, guid: 60beb3e564e6244b38f5c69833103ba4, type: 3}
@@ -28,6 +29,7 @@ MonoBehaviour:
     m_baseAttack: 1
     m_baseDefense: 1
     m_baseSpeed: 2
+    m_baseMovement: 1
   - m_name: Geordi La Forge
     m_unlocked: 1
     m_icon: {fileID: 21300000, guid: ed6a8e93de1b04a8b8315a34a0bef0e0, type: 3}
@@ -36,6 +38,7 @@ MonoBehaviour:
     m_baseAttack: 1
     m_baseDefense: 1
     m_baseSpeed: 3
+    m_baseMovement: 1
   - m_name: Worf
     m_unlocked: 1
     m_icon: {fileID: 21300000, guid: 7bb5beb1e70d849478c925f95268588f, type: 3}
@@ -44,3 +47,4 @@ MonoBehaviour:
     m_baseAttack: 1
     m_baseDefense: 1
     m_baseSpeed: 4
+    m_baseMovement: 1
