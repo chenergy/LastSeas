@@ -18,10 +18,16 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class UIBattleSelectionMenu : MonoBehaviour
 {
+    public Button m_moveButton;
+
+    public Button m_attackButton;
+
+    public Button m_endTurnButton;
 
     // Use this for initialization
     void Start ()

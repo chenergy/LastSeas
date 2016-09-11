@@ -33,6 +33,13 @@ public class BattleManager : MonoBehaviour
     public Player m_player;
 
     /// <summary>
+    /// The layer that register the ground position to move to.
+    /// </summary>
+//    public LayerMask m_groundHitLayer;
+
+    public GameObject m_movementRange;
+
+    /// <summary>
     /// The UI displaying the order of battle.
     /// </summary>
     public UIBattleCombatOrder m_combatOrderUI;
@@ -51,6 +58,16 @@ public class BattleManager : MonoBehaviour
     /// The radius around the player to include enemies.
     /// </summary>
     public float m_combatRadius = 10.0f;
+
+    /// <summary>
+    /// If the character has already moved yet.
+    /// </summary>
+    public bool m_hasMoved = false;
+
+    /// <summary>
+    /// If the character has already attacked yet.
+    /// </summary>
+    public bool m_hasAttacked = false;
 
     /// <summary>
     /// The position that battle started at.
@@ -74,6 +91,7 @@ public class BattleManager : MonoBehaviour
     {
         m_selectionMenuUI.gameObject.SetActive(false);
         m_moveMenuUI.gameObject.SetActive(false);
+        m_movementRange.SetActive(false);
         _InitFSM();
     }
 
@@ -86,6 +104,11 @@ public class BattleManager : MonoBehaviour
         {
             _EnterCombat();
         }
+    }
+
+    public bool IsInMovementRange(Vector3 point)
+    {
+        return (point - m_startPosition).magnitude < m_combatRadius;
     }
 
     public void ButtonMove()
@@ -297,6 +320,16 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _SelectionEnterAction(FSMContext fsm, params object[] list)
     {
+        if (m_hasMoved)
+        {
+            m_selectionMenuUI.m_moveButton.interactable = false;
+        }
+
+        if (m_hasAttacked)
+        {
+            m_selectionMenuUI.m_attackButton.interactable = false;
+        }
+
         BattleCharacter bc = m_battleCharacters[0];
         Debug.Log("starting turn for " + bc.m_name);
         if (bc.m_playerControlled)
@@ -336,17 +369,24 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _MoveEnterAction(FSMContext fsm, params object[] list)
     {
-        m_moveMenuUI.gameObject.SetActive(true);
+        if (!m_hasMoved)
+        {
+            m_hasMoved = true;
+            m_moveMenuUI.gameObject.SetActive(true);
+            m_movementRange.SetActive(true);
+            m_movementRange.transform.position = m_player.transform.position;
+            m_movementRange.transform.localScale = new Vector3(m_combatRadius * 2.0f, 0.01f, m_combatRadius * 2.0f);
 
-        BattleCharacter bc = m_battleCharacters[0];
-        if (bc.m_playerControlled)
-        {
-            m_player.m_movementEnabled = true;
-        }
-        else
-        {
-            // Computer decides where to move to.
-            m_fsm.Dispatch("endTurn");
+            BattleCharacter bc = m_battleCharacters[0];
+            if (bc.m_playerControlled)
+            {
+                m_player.m_movementEnabled = true;
+            }
+            else
+            {
+                // Computer decides where to move to.
+                m_fsm.Dispatch("endTurn");
+            }
         }
     }
 
@@ -367,6 +407,7 @@ public class BattleManager : MonoBehaviour
     private void _MoveExitAction(FSMContext fsm, params object[] list)
     {
         m_moveMenuUI.gameObject.SetActive(false);
+        m_movementRange.gameObject.SetActive(false);
 
         BattleCharacter bc = m_battleCharacters[0];
         if (bc.m_playerControlled)
@@ -429,6 +470,7 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _AttackExitAction(FSMContext fsm, params object[] list)
     {
+        m_hasAttacked = true;
     }
 
     /// <summary>
@@ -438,6 +480,8 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _EndTurnEnterAction(FSMContext fsm, params object[] list)
     {
+        m_hasMoved = false;
+        m_hasAttacked = false;
         BattleCharacter bc = m_battleCharacters[0];
         m_battleCharacters.RemoveAt(0);
         m_battleCharacters.Add(bc);

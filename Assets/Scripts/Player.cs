@@ -28,7 +28,7 @@ public class Player : Airship
     /// <summary>
     /// The layer that register the ground position to move to.
     /// </summary>
-    public LayerMask m_groundHitLayer;
+//    public LayerMask m_groundHitLayer;
 
     /// <summary>
     /// Check whether player can be accessed.
@@ -40,18 +40,14 @@ public class Player : Airship
     /// </summary>
     public void Update()
     {
+    }
+
+    public void MoveToPosition(Vector3 position)
+    {
         if (m_movementEnabled)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_groundHitLayer))
-                {
-                    StopAllCoroutines();
-                    StartCoroutine(_MoveToPointRoutine(hit.point));
-                }
-            }
+            StopAllCoroutines();
+            StartCoroutine(_MoveToPointRoutine(position));
         }
     }
 }
