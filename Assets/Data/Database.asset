@@ -48,3 +48,7 @@ MonoBehaviour:
     m_baseDefense: 1
     m_baseSpeed: 4
     m_baseMovement: 1
+  m_attacks:
+  - m_name: BOMBARD
+    m_prefab: {fileID: 1000012052255020, guid: c58354af75ff44ab9b2a5d357353ad33, type: 2}
+    m_damage: 5

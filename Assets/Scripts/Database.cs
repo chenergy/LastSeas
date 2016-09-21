@@ -39,10 +39,16 @@ public class Database : ScriptableObject
     }
 
     /// <summary>
-    /// List of characters and their basic data.
+    /// List of characters stored in database.
     /// </summary>
     [SerializeField]
     private CharacterData[] m_characters;
+
+    /// <summary>
+    /// List of attacks stored in database.
+    /// </summary>
+    [SerializeField]
+    private AttackData[] m_attacks;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Database"/> class.
@@ -67,12 +73,32 @@ public class Database : ScriptableObject
 
         return null;
     }
+
+    /// <summary>
+    /// Gets the attack data.
+    /// </summary>
+    /// <returns>The attack data.</returns>
+    /// <param name="name">Name.</param>
+    public AttackData GetAttackData(AttackName name)
+    {
+        if (((int)name) < m_attacks.Length)
+        {
+            return m_attacks[(int)name];
+        }
+
+        return null;
+    }
 }
 
 /// <summary>
 /// Character name.
 /// </summary>
 public enum CharacterName { PICARD, RIKER, LAFORGE, WORF };
+
+/// <summary>
+/// Attack name.
+/// </summary>
+public enum AttackName { BOMBARD };
 
 /// <summary>
 /// Character data.
@@ -89,4 +115,15 @@ public class CharacterData
     public int m_baseDefense;
     public int m_baseSpeed;
     public int m_baseMovement;
+}
+
+/// <summary>
+/// Attack data.
+/// </summary>
+[System.Serializable]
+public class AttackData
+{
+    public string m_name;
+    public GameObject m_prefab;
+    public int m_damage;
 }

@@ -54,6 +54,8 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public UIBattleMoveMenu m_moveMenuUI;
 
+    public UIBattleAttackMenu m_attackMenuUI;
+
     /// <summary>
     /// The radius around the player to include enemies.
     /// </summary>
@@ -85,12 +87,18 @@ public class BattleManager : MonoBehaviour
     private FSMContext m_fsm;
 
     /// <summary>
+    /// The last attack used. Used to destroy attack object after state change.
+    /// </summary>
+    private Attack m_lastAttack;
+
+    /// <summary>
     /// Use this for initialization.
     /// </summary>
     public void Start()
     {
         m_selectionMenuUI.gameObject.SetActive(false);
         m_moveMenuUI.gameObject.SetActive(false);
+        m_attackMenuUI.gameObject.SetActive(false);
         m_movementRange.SetActive(false);
         _InitFSM();
     }
@@ -135,7 +143,11 @@ public class BattleManager : MonoBehaviour
 
     public void ButtonFinalizeAttack(string attack)
     {
-        
+        AttackName name = (AttackName)System.Enum.Parse(typeof(AttackName), attack);
+        AttackData data = Database.Instance.GetAttackData(name);
+
+        m_attackMenuUI.gameObject.SetActive(false);
+
     }
 
     public void ButtonEndTurn()
@@ -369,8 +381,8 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _MoveEnterAction(FSMContext fsm, params object[] list)
     {
-        if (!m_hasMoved)
-        {
+//        if (!m_hasMoved)
+//        {
             m_hasMoved = true;
             m_moveMenuUI.gameObject.SetActive(true);
             m_movementRange.SetActive(true);
@@ -387,7 +399,7 @@ public class BattleManager : MonoBehaviour
                 // Computer decides where to move to.
                 m_fsm.Dispatch("endTurn");
             }
-        }
+//        }
     }
 
     /// <summary>
@@ -425,33 +437,7 @@ public class BattleManager : MonoBehaviour
     {
         // perform the attack
         Debug.Log("perform attack");
-
-        int totalPlayerHp = 0;
-        int totalEnemyHp = 0;
-        foreach (BattleCharacter bc in m_battleCharacters)
-        {
-            if (bc.m_playerControlled)
-            {
-                totalPlayerHp += bc.m_curHealth;
-            }
-            else
-            {
-                totalEnemyHp += bc.m_curHealth;
-            }
-        }
-
-        if (totalEnemyHp <= 0)
-        {
-            m_fsm.Dispatch("victory");
-        }
-        else if (totalPlayerHp <= 0)
-        {
-            m_fsm.Dispatch("lose");
-        }
-        else
-        {
-            m_fsm.Dispatch("selection");
-        }
+        m_attackMenuUI.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -461,6 +447,35 @@ public class BattleManager : MonoBehaviour
     /// <param name="list">List of parameters.</param>
     private void _AttackUpdateAction(FSMContext fsm, params object[] list)
     {
+        if (m_hasAttacked)
+        {
+            int totalPlayerHp = 0;
+            int totalEnemyHp = 0;
+            foreach (BattleCharacter bc in m_battleCharacters)
+            {
+                if (bc.m_playerControlled)
+                {
+                    totalPlayerHp += bc.m_curHealth;
+                }
+                else
+                {
+                    totalEnemyHp += bc.m_curHealth;
+                }
+            }
+
+            if (totalEnemyHp <= 0)
+            {
+                m_fsm.Dispatch("victory");
+            }
+            else if (totalPlayerHp <= 0)
+            {
+                m_fsm.Dispatch("lose");
+            }
+            else
+            {
+                m_fsm.Dispatch("selection");
+            }
+        }
     }
 
     /// <summary>
@@ -471,6 +486,7 @@ public class BattleManager : MonoBehaviour
     private void _AttackExitAction(FSMContext fsm, params object[] list)
     {
         m_hasAttacked = true;
+        m_attackMenuUI.gameObject.SetActive(true);
     }
 
     /// <summary>
