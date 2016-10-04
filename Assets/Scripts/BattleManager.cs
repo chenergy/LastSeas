@@ -21,6 +21,7 @@ using FSM;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Manages the battle sequence and actions.
@@ -28,14 +29,14 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     /// <summary>
+    /// The layer that register the ground position to move to.
+    /// </summary>
+    public LayerMask m_groundHitLayer;
+
+    /// <summary>
     /// Reference to the player.
     /// </summary>
     public Player m_player;
-
-    /// <summary>
-    /// The layer that register the ground position to move to.
-    /// </summary>
-//    public LayerMask m_groundHitLayer;
 
     public GameObject m_movementRange;
 
@@ -48,13 +49,6 @@ public class BattleManager : MonoBehaviour
     /// The UI to selection player driven actions.
     /// </summary>
     public UIBattleSelectionMenu m_selectionMenuUI;
-
-    /// <summary>
-    /// The UI to end movement.
-    /// </summary>
-    public UIBattleMoveMenu m_moveMenuUI;
-
-    public UIBattleAttackMenu m_attackMenuUI;
 
     /// <summary>
     /// The radius around the player to include enemies.
@@ -82,11 +76,6 @@ public class BattleManager : MonoBehaviour
     private List<BattleCharacter> m_battleCharacters = new List<BattleCharacter>();
 
     /// <summary>
-    /// The finite state machine that controls the battle sequence.
-    /// </summary>
-    private FSMContext m_fsm;
-
-    /// <summary>
     /// The last attack used. Used to destroy attack object after state change.
     /// </summary>
     private Attack m_lastAttack;
@@ -97,10 +86,7 @@ public class BattleManager : MonoBehaviour
     public void Start()
     {
         m_selectionMenuUI.gameObject.SetActive(false);
-        m_moveMenuUI.gameObject.SetActive(false);
-        m_attackMenuUI.gameObject.SetActive(false);
         m_movementRange.SetActive(false);
-        _InitFSM();
     }
 
     /// <summary>
@@ -114,93 +100,23 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public bool IsInMovementRange(Vector3 point)
+    public void TouchMove(BaseEventData bed)
+    {
+        PointerEventData ped = (PointerEventData)bed;
+        Ray ray = Camera.main.ScreenPointToRay(ped.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_groundHitLayer))
+        {
+            if (_IsInMovementRange(hit.point))
+            {
+//                m_player.MoveToPosition(hit.point);
+            }
+        }
+    }
+
+    private bool _IsInMovementRange(Vector3 point)
     {
         return (point - m_startPosition).magnitude < m_combatRadius;
-    }
-
-    public void ButtonMove()
-    {
-        m_fsm.Dispatch("move");
-    }
-
-    public void ButtonAttack()
-    {
-        m_fsm.Dispatch("attack");
-    }
-
-    public void ButtonFinalizeMove()
-    {
-        if ((m_player.transform.position - m_startPosition).magnitude > m_combatRadius)
-        {
-            m_fsm.Dispatch("escape");
-        }
-        else
-        {
-            m_fsm.Dispatch("selection");
-        }
-    }
-
-    public void ButtonFinalizeAttack(string attack)
-    {
-        AttackName name = (AttackName)System.Enum.Parse(typeof(AttackName), attack);
-        AttackData data = Database.Instance.GetAttackData(name);
-
-        m_attackMenuUI.gameObject.SetActive(false);
-
-    }
-
-    public void ButtonEndTurn()
-    {
-        m_fsm.Dispatch("endTurn");
-    }
-
-    /// <summary>
-    /// Setup the states used in the finite state machine.
-    /// </summary>
-    private void _InitFSM()
-    {
-        FSMState inactiveState = new FSMState(_NoAction, _NoAction, _NoAction);
-        FSMState startupState = new FSMState(_StartupEnterAction, _StartupUpdateAction, _StartupExitAction);
-        FSMState selectionState = new FSMState(_SelectionEnterAction, _SelectionUpdateAction, _SelectionExitAction);
-        FSMState moveState = new FSMState(_MoveEnterAction, _MoveUpdateAction, _MoveExitAction);
-        FSMState attackState = new FSMState(_AttackEnterAction, _AttackUpdateAction, _AttackExitAction);
-        FSMState endTurnState = new FSMState(_EndTurnEnterAction, _EndTurnUpdateAction, _EndTurnExitAction);
-        FSMState victoryState = new FSMState(_VictoryEnterAction, _VictoryUpdateAction, _VictoryExitAction);
-        FSMState loseState = new FSMState(_LoseEnterAction, _LoseUpdateAction, _LoseExitAction);
-        FSMState escapeState = new FSMState(_EscapeEnterAction, _EscapeUpdateAction, _EscapeExitAction);
-
-        FSMTransition inactiveToStartupTransition = new FSMTransition(startupState, _NoAction);
-        FSMTransition startupToSelectionTransition = new FSMTransition(selectionState, _NoAction);
-        FSMTransition selectionToMoveTransition = new FSMTransition(moveState, _NoAction);
-        FSMTransition selectionToAttackTransition = new FSMTransition(attackState, _NoAction);
-        FSMTransition selectionToEndTurnTransition = new FSMTransition(endTurnState, _NoAction);
-        FSMTransition moveToSelectionTransition = new FSMTransition(selectionState, _NoAction);
-        FSMTransition moveToEscapeTransition = new FSMTransition(escapeState, _NoAction);
-        FSMTransition attackToSelectionTransition = new FSMTransition(selectionState, _NoAction);
-        FSMTransition attackToVictoryTransition = new FSMTransition(victoryState, _NoAction);
-        FSMTransition attackToLoseTransition = new FSMTransition(loseState, _NoAction);
-        FSMTransition endTurnToSelectionTransition = new FSMTransition(selectionState, _NoAction);
-        FSMTransition escapeToInactiveTransition = new FSMTransition(inactiveState, _NoAction);
-        FSMTransition victoryToInactiveTransition = new FSMTransition(inactiveState, _NoAction);
-        FSMTransition loseToInactiveTransition = new FSMTransition(inactiveState, _NoAction);
-
-        inactiveState.AddTransition(inactiveToStartupTransition, "startup");
-        startupState.AddTransition(startupToSelectionTransition, "selection");
-        selectionState.AddTransition(selectionToMoveTransition, "move");
-        selectionState.AddTransition(selectionToAttackTransition, "attack");
-        selectionState.AddTransition(selectionToEndTurnTransition, "endTurn");
-        moveState.AddTransition(moveToSelectionTransition, "selection");
-        moveState.AddTransition(moveToEscapeTransition, "escape");
-        attackState.AddTransition(attackToSelectionTransition, "selection");
-        attackState.AddTransition(attackToVictoryTransition, "victory");
-        attackState.AddTransition(attackToLoseTransition, "lose");
-        endTurnState.AddTransition(endTurnToSelectionTransition, "selection");
-        escapeState.AddTransition(escapeToInactiveTransition, "inactive");
-        victoryState.AddTransition(victoryToInactiveTransition, "inactive");
-        loseState.AddTransition(loseToInactiveTransition, "inactive");
-
-        m_fsm = FSM.FSM.CreateFSMInstance(inactiveState, _NoAction);
     }
 
     /// <summary>
@@ -208,7 +124,9 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void _EnterCombat()
     {
-        m_fsm.Dispatch("startup");
+//        m_fsm.Dispatch("startup");
+        _SetupBattleOrder();
+        BeginTurn();
     }
 
     /// <summary>
@@ -275,337 +193,32 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-
-    private void _OpenSelectionMenu()
+    public void BeginTurn()
     {
-        m_selectionMenuUI.gameObject.SetActive(true);
-    }
-
-    private void _CloseSelectionMenu()
-    {
-        m_selectionMenuUI.gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// Performs no action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _NoAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// Startup enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _StartupEnterAction(FSMContext fsm, params object[] list)
-    {
-        Debug.Log("startup enter");
-        _SetupBattleOrder();
-        m_fsm.Dispatch("selection");
-    }
-
-    /// <summary>
-    /// Startup update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _StartupUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// Startup exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _StartupExitAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// Selection enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _SelectionEnterAction(FSMContext fsm, params object[] list)
-    {
-        if (m_hasMoved)
+        if (m_battleCharacters[0].m_playerControlled)
         {
-            m_selectionMenuUI.m_moveButton.interactable = false;
-        }
-
-        if (m_hasAttacked)
-        {
-            m_selectionMenuUI.m_attackButton.interactable = false;
-        }
-
-        BattleCharacter bc = m_battleCharacters[0];
-        Debug.Log("starting turn for " + bc.m_name);
-        if (bc.m_playerControlled)
-        {
-            _OpenSelectionMenu();
+            m_selectionMenuUI.gameObject.SetActive(true);
+            m_selectionMenuUI.BeginTurn(m_battleCharacters[0]);
         }
         else
         {
-            // Computer decides what action to take.
-            m_fsm.Dispatch("endTurn");
+            _DetermineAIAction();
         }
     }
 
-    /// <summary>
-    /// Selection update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _SelectionUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// Selection exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _SelectionExitAction(FSMContext fsm, params object[] list)
-    {
-        _CloseSelectionMenu();
-    }
-
-    /// <summary>
-    /// Move enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _MoveEnterAction(FSMContext fsm, params object[] list)
-    {
-//        if (!m_hasMoved)
-//        {
-            m_hasMoved = true;
-            m_moveMenuUI.gameObject.SetActive(true);
-            m_movementRange.SetActive(true);
-            m_movementRange.transform.position = m_player.transform.position;
-            m_movementRange.transform.localScale = new Vector3(m_combatRadius * 2.0f, 0.01f, m_combatRadius * 2.0f);
-
-            BattleCharacter bc = m_battleCharacters[0];
-            if (bc.m_playerControlled)
-            {
-                m_player.m_movementEnabled = true;
-            }
-            else
-            {
-                // Computer decides where to move to.
-                m_fsm.Dispatch("endTurn");
-            }
-//        }
-    }
-
-    /// <summary>
-    /// Move update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _MoveUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// Move exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _MoveExitAction(FSMContext fsm, params object[] list)
-    {
-        m_moveMenuUI.gameObject.SetActive(false);
-        m_movementRange.gameObject.SetActive(false);
-
-        BattleCharacter bc = m_battleCharacters[0];
-        if (bc.m_playerControlled)
-        {
-            m_player.m_movementEnabled = false;
-        }
-    }
-
-    /// <summary>
-    /// Attack enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _AttackEnterAction(FSMContext fsm, params object[] list)
-    {
-        // perform the attack
-        Debug.Log("perform attack");
-        m_attackMenuUI.gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// Attack update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _AttackUpdateAction(FSMContext fsm, params object[] list)
-    {
-        if (m_hasAttacked)
-        {
-            int totalPlayerHp = 0;
-            int totalEnemyHp = 0;
-            foreach (BattleCharacter bc in m_battleCharacters)
-            {
-                if (bc.m_playerControlled)
-                {
-                    totalPlayerHp += bc.m_curHealth;
-                }
-                else
-                {
-                    totalEnemyHp += bc.m_curHealth;
-                }
-            }
-
-            if (totalEnemyHp <= 0)
-            {
-                m_fsm.Dispatch("victory");
-            }
-            else if (totalPlayerHp <= 0)
-            {
-                m_fsm.Dispatch("lose");
-            }
-            else
-            {
-                m_fsm.Dispatch("selection");
-            }
-        }
-    }
-
-    /// <summary>
-    /// Attack exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _AttackExitAction(FSMContext fsm, params object[] list)
-    {
-        m_hasAttacked = true;
-        m_attackMenuUI.gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// End turn enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EndTurnEnterAction(FSMContext fsm, params object[] list)
+    public void EndTurn()
     {
         m_hasMoved = false;
         m_hasAttacked = false;
         BattleCharacter bc = m_battleCharacters[0];
         m_battleCharacters.RemoveAt(0);
         m_battleCharacters.Add(bc);
-        m_fsm.Dispatch("selection");
+        BeginTurn();
     }
 
-    /// <summary>
-    /// End turn update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EndTurnUpdateAction(FSMContext fsm, params object[] list)
+    private void _DetermineAIAction()
     {
-    }
-
-    /// <summary>
-    /// End turn exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EndTurnExitAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _VictoryEnterAction(FSMContext fsm, params object[] list)
-    {
-        Debug.Log("victory");
-        m_fsm.Dispatch("inactive");
-    }
-
-    /// <summary>
-    /// End turn update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _VictoryUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _VictoryExitAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _LoseEnterAction(FSMContext fsm, params object[] list)
-    {
-        Debug.Log("lose");
-    }
-
-    /// <summary>
-    /// End turn update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _LoseUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _LoseExitAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn enter action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EscapeEnterAction(FSMContext fsm, params object[] list)
-    {
-        Debug.Log("escaped");
-        m_fsm.Dispatch("inactive");
-    }
-
-    /// <summary>
-    /// End turn update action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EscapeUpdateAction(FSMContext fsm, params object[] list)
-    {
-    }
-
-    /// <summary>
-    /// End turn exit action.
-    /// </summary>
-    /// <param name="context">FSM.</param>
-    /// <param name="list">List of parameters.</param>
-    private void _EscapeExitAction(FSMContext fsm, params object[] list)
-    {
+        EndTurn();
     }
 }
 

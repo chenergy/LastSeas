@@ -38,7 +38,7 @@ public abstract class Airship : MonoBehaviour
     /// <summary>
     /// The acceleration to top speed.
     /// </summary>
-    [Range(0f, 1f)]
+//    [Range(0f, 1f)]
     public float m_acceleration = 0.1f;
 
     /// <summary>
@@ -58,32 +58,39 @@ public abstract class Airship : MonoBehaviour
     {
     }
 
+    public void FixedUpdate()
+    {
+        float displacement = m_curSpeed * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
+        transform.position += transform.forward * displacement;
+        m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
+    }
+
     /// <summary>
     /// Moves to the point.
     /// </summary>
     /// <returns>The coroutine.</returns>
     /// <param name="point">The point to move to.</param>
-    protected IEnumerator _MoveToPointRoutine(Vector3 point)
-    {
-        transform.forward = point - transform.position;
-
-        float t = 0;
-        float distance = (point - transform.position).magnitude;
-        Vector3 start = transform.position;
-
-        while (t < distance)
-        {
-            m_curSpeed = Mathf.Lerp(m_curSpeed, m_topSpeed, m_acceleration);
-            transform.position = Vector3.Lerp(start, point, t / distance);
-            m_animator.SetFloat("Speed", m_curSpeed);
-
-            t += Time.deltaTime * m_curSpeed;
-            yield return new WaitForEndOfFrame();
-        }
-
-        transform.position = point;
-        m_curSpeed = 0;
-        m_animator.SetFloat("Speed", 0);
-    }
+//    protected IEnumerator _MoveToPointRoutine(Vector3 point)
+//    {
+//        transform.forward = point - transform.position;
+//
+//        float t = 0;
+//        float distance = (point - transform.position).magnitude;
+//        Vector3 start = transform.position;
+//
+//        while (t < distance)
+//        {
+//            m_curSpeed = Mathf.Lerp(m_curSpeed, m_topSpeed, m_acceleration);
+//            transform.position = Vector3.Lerp(start, point, t / distance);
+//            m_animator.SetFloat("Speed", m_curSpeed);
+//
+//            t += Time.deltaTime * m_curSpeed;
+//            yield return new WaitForEndOfFrame();
+//        }
+//
+//        transform.position = point;
+//        m_curSpeed = 0;
+//        m_animator.SetFloat("Speed", 0);
+//    }
 }
 

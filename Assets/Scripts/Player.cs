@@ -25,30 +25,58 @@ using System.Collections;
 /// </summary>
 public class Player : Airship
 {
+    public Transform m_model;
     /// <summary>
     /// The layer that register the ground position to move to.
     /// </summary>
-//    public LayerMask m_groundHitLayer;
+    public LayerMask m_groundHitLayer;
 
     /// <summary>
     /// Check whether player can be accessed.
     /// </summary>
     public bool m_movementEnabled = false;
 
+    public float m_maxHorizontalRotation = 30f;
+    public float m_maxVerticalRotation = 15f;
+
     /// <summary>
     /// Update is called once per frame.
     /// </summary>
     public void Update()
     {
+//        if (m_movementEnabled)
+//        {
+//            if (Input.GetAxis("Fire1") > 0)
+//            {
+//                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+//                RaycastHit hit;
+//                if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_groundHitLayer))
+//                {
+//                    MoveToPosition(hit.point);
+//                }
+//            }
+//        }
+
+        Vector3 curRotation = transform.rotation.eulerAngles;
+
+        transform.rotation = Quaternion.Euler(-Input.GetAxis("Vertical") * m_maxVerticalRotation, 
+            curRotation.y + Input.GetAxis("Horizontal") * m_maxHorizontalRotation, 0);
+        
+        m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_maxHorizontalRotation * 10,
+            90f, 0f);
     }
 
-    public void MoveToPosition(Vector3 position)
-    {
-        if (m_movementEnabled)
-        {
-            StopAllCoroutines();
-            StartCoroutine(_MoveToPointRoutine(position));
-        }
-    }
+    /// <summary>
+    /// Moves to the given world position.
+    /// </summary>
+    /// <param name="position">Position in world space.</param>
+//    public void MoveToPosition(Vector3 position)
+//    {
+//        if (m_movementEnabled)
+//        {
+//            StopAllCoroutines();
+//            StartCoroutine(_MoveToPointRoutine(position));
+//        }
+//    }
 }
 

@@ -32,6 +32,11 @@ public class UIBattleCombatOrder : MonoBehaviour
     public GameObject m_characterUIPrefab;
 
     /// <summary>
+    /// The overlay highlight to show a character is currently selected.
+    /// </summary>
+    public RectTransform m_selectedCharacterHighlight;
+
+    /// <summary>
     /// Reference to the RectTransform of the current canvas.
     /// </summary>
     private RectTransform m_rectTransform;
@@ -78,6 +83,15 @@ public class UIBattleCombatOrder : MonoBehaviour
         }
 
         m_battleCharacterOrder.Clear();
+    }
+
+    /// <summary>
+    /// Shows that the given character is selected
+    /// </summary>
+    /// <param name="character">Selected character.</param>
+    public void SelectedCharacter(int character)
+    {
+        m_selectedCharacterHighlight.position = m_battleCharacterOrder[character].transform.position;
     }
 }
 

@@ -23,22 +23,93 @@ using System.Collections;
 
 public class UIBattleSelectionMenu : MonoBehaviour
 {
-    public Button m_moveButton;
+    public GameObject m_mainMenu;
+    public GameObject m_moveFinalizeMenu;
+    public GameObject m_attackMenu;
+    public GameObject m_attackFinalizeMenu;
+    public Text m_characterName;
 
-    public Button m_attackButton;
-
-    public Button m_endTurnButton;
+    private BattleManager m_battleManager;
+    private BattleCharacter m_curBattleCharacter;
 
     // Use this for initialization
     void Start ()
     {
-	
+        m_battleManager = FindObjectOfType<BattleManager>();
+        _Reset();
     }
-	
-    // Update is called once per frame
-    void Update ()
+
+    public void BeginTurn(BattleCharacter character)
     {
-	
+        m_curBattleCharacter = character;
+        m_characterName.text = character.m_name;
+        m_mainMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonMove()
+    {
+        m_mainMenu.gameObject.SetActive(false);
+        m_moveFinalizeMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonAttack()
+    {
+        m_mainMenu.gameObject.SetActive(false);
+        m_attackMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonMoveFinalize()
+    {
+        m_moveFinalizeMenu.gameObject.SetActive(false);
+        m_mainMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonMoveFinalizeCancel()
+    {
+        m_moveFinalizeMenu.gameObject.SetActive(false);
+        m_mainMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonAttackSelection(string attack)
+    {
+        AttackName name = (AttackName)System.Enum.Parse(typeof(AttackName), attack);
+        AttackData data = Database.Instance.GetAttackData(name);
+        GameObject.Instantiate(data.m_prefab, m_battleManager.m_player.transform.position, Quaternion.identity);
+
+        m_attackMenu.gameObject.SetActive(false);
+        m_attackFinalizeMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonAttackSelectionCancel()
+    {
+        m_attackMenu.gameObject.SetActive(false);
+        m_mainMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonAttackFinalize()
+    {
+        m_attackFinalizeMenu.gameObject.SetActive(false);
+        m_mainMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonAttackFinalizeCancel()
+    {
+        m_attackFinalizeMenu.gameObject.SetActive(false);
+        m_attackMenu.gameObject.SetActive(true);
+    }
+
+    public void ButtonEndTurn()
+    {
+        m_battleManager.EndTurn();
+        _Reset();
+    }
+
+    private void _Reset()
+    {
+        m_mainMenu.gameObject.SetActive(false);
+        m_moveFinalizeMenu.gameObject.SetActive(false);
+        m_attackMenu.gameObject.SetActive(false);
+        m_attackFinalizeMenu.gameObject.SetActive(false);
     }
 }
 
