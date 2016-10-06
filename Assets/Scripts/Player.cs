@@ -26,10 +26,14 @@ using System.Collections;
 public class Player : Airship
 {
     public Transform m_model;
+
     /// <summary>
     /// The layer that register the ground position to move to.
     /// </summary>
     public LayerMask m_groundHitLayer;
+
+    public enum FlightMode { ALL_RANGE, AUTO };
+    public FlightMode m_mode = FlightMode.ALL_RANGE;
 
     /// <summary>
     /// Check whether player can be accessed.
@@ -44,39 +48,16 @@ public class Player : Airship
     /// </summary>
     public void Update()
     {
-//        if (m_movementEnabled)
-//        {
-//            if (Input.GetAxis("Fire1") > 0)
-//            {
-//                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//                RaycastHit hit;
-//                if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_groundHitLayer))
-//                {
-//                    MoveToPosition(hit.point);
-//                }
-//            }
-//        }
+        if (m_mode == FlightMode.ALL_RANGE)
+        {
+            Vector3 curRotation = transform.rotation.eulerAngles;
 
-        Vector3 curRotation = transform.rotation.eulerAngles;
-
-        transform.rotation = Quaternion.Euler(-Input.GetAxis("Vertical") * m_maxVerticalRotation, 
-            curRotation.y + Input.GetAxis("Horizontal") * m_maxHorizontalRotation, 0);
-        
-        m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_maxHorizontalRotation * 10,
-            90f, 0f);
+            transform.rotation = Quaternion.Euler(-Input.GetAxis("Vertical") * m_maxVerticalRotation, 
+                curRotation.y + Input.GetAxis("Horizontal") * m_maxHorizontalRotation, 0);
+            
+            m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_maxHorizontalRotation * 10,
+                90f, 0f);
+        }
     }
-
-    /// <summary>
-    /// Moves to the given world position.
-    /// </summary>
-    /// <param name="position">Position in world space.</param>
-//    public void MoveToPosition(Vector3 position)
-//    {
-//        if (m_movementEnabled)
-//        {
-//            StopAllCoroutines();
-//            StartCoroutine(_MoveToPointRoutine(position));
-//        }
-//    }
 }
 
