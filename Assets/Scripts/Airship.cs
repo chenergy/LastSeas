@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Player.cs" company="Jonathan Chien">
+// <copyright file="Airship.cs" company="Jonathan Chien">
 //
 // Copyright 2016 Jonathan Chien. All Rights Reserved.
 //
@@ -38,7 +38,6 @@ public abstract class Airship : MonoBehaviour
     /// <summary>
     /// The acceleration to top speed.
     /// </summary>
-//    [Range(0f, 1f)]
     public float m_acceleration = 0.1f;
 
     /// <summary>
@@ -49,7 +48,7 @@ public abstract class Airship : MonoBehaviour
     /// <summary>
     /// Internal current speed for movement.
     /// </summary>
-    private float m_curSpeed;
+    protected float m_curSpeed;
 
     /// <summary>
     /// Use this for initialization.
@@ -58,12 +57,15 @@ public abstract class Airship : MonoBehaviour
     {
     }
 
-    public void FixedUpdate()
-    {
-        float displacement = m_curSpeed * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
-        transform.position += transform.forward * displacement;
-        m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
-    }
+    ///// <summary>
+    ///// This function is called every fixed framerate frame.
+    ///// </summary>
+    //public virtual void FixedUpdate()
+    //{
+    //    float displacement = m_curSpeed * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
+    //    transform.position += transform.forward * displacement;
+    //    m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
+    //}
 
     /// <summary>
     /// Moves to the point.
