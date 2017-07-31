@@ -1,23 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Player.cs" company="Jonathan Chien">
-//
-// Copyright 2016 Jonathan Chien. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// </copyright>
-//-----------------------------------------------------------------------
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 /// <summary>
@@ -25,19 +6,15 @@ using System.Collections;
 /// </summary>
 public class Player : Airship
 {
+    public AimTarget m_aimTarget;
+
     /// <summary>
     /// Reference to the base model object contained in the GameObject.
     /// </summary>
     public Transform m_model;
-
     public Transform m_bow;
     public Transform m_port;
     public Transform m_starboard;
-
-    /// <summary>
-    /// The layer that register the ground position to move to.
-    /// </summary>
-    public LayerMask m_groundHitLayer;
 
     /// <summary>
     /// Mode showing how the flight should behave.
@@ -49,64 +26,93 @@ public class Player : Airship
     /// </summary>
     public FlightMode m_mode = FlightMode.ALL_RANGE;
 
+    private float m_maxMoveDelta = .1f;
+
     /// <summary>
     /// Check whether player can be accessed.
     /// </summary>
-    public bool m_movementEnabled = false;
+    //public bool m_movementEnabled = false;
 
     /// <summary>
-    /// Maximum horizontal rotation in degrees.
+    /// Multiplier of horizontal rotation in degrees.
     /// </summary>
-    public float m_maxHorizontalRotation = 30f;
+//    public float m_horizontalRotationMultiplier = 30f;
+//    public float m_horizontalPositionMultiplier = 10f;
 
     /// <summary>
-    /// Maximum vertical rotation in degrees.
+    /// Multiplier of vertical rotation in degrees.
     /// </summary>
-    public float m_maxVerticalRotation = 15f;
+//    public float m_verticalRotationMultiplier = 15f;
+//    public float m_verticalPositionMultiplier = 10f;
 
-    private Transform m_railsParent;
-
-    /// <summary>
-    /// This function is called every fixed framerate frame.
-    /// </summary>
-    public void FixedUpdate()
-    {
-        if (m_mode == FlightMode.ALL_RANGE)
-        {
-            float displacement = m_curSpeed * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
-            transform.position += transform.forward * displacement;
-            m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
-
-            Vector3 curRotation = transform.rotation.eulerAngles;
-            transform.rotation = Quaternion.Euler(-Input.GetAxis("Vertical") * m_maxVerticalRotation,
-                                                  curRotation.y + Input.GetAxis("Horizontal") * m_maxHorizontalRotation, 0);
-            m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_maxHorizontalRotation * 20,
-                90f, 0f);
-        }
-        else if (m_mode == FlightMode.ON_RAILS)
-        {
-            transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -10, 10),
-                                                  Mathf.Clamp(transform.localPosition.y, -10, 10),
-                                                  transform.localPosition.z);
-            m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_maxHorizontalRotation * 20,
-                90f, 0f);
-        }
-    }
-
-    /// <summary>
-    /// Update is called once per frame.
-    /// </summary>
     public void Update()
     {
-        if (Input.GetAxis("Jump") > 0)
+//        transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * m_horizontalPositionMultiplier, 
+//            Input.GetAxis("Vertical") * m_verticalPositionMultiplier, 0.0f);
+//        transform.localRotation = Quaternion.Euler(Input.GetAxis("Vertical") * m_verticalRotationMultiplier,
+//            0f, -Input.GetAxis("Horizontal") * m_horizontalRotationMultiplier);
+        m_model.transform.LookAt(m_aimTarget.m_farTarget);
+        Vector3 viewportPoint = new Vector3(m_aimTarget.TargetViewportPosition.x, 
+                                    m_aimTarget.TargetViewportPosition.y,
+                                    AimTarget.FAR_TARGET_MAX_DISTANCE);
+        Vector3 aimTargetPosition = Camera.main.ViewportToWorldPoint(viewportPoint);
+        Vector3 localAimPosition = m_model.transform.InverseTransformPoint(aimTargetPosition);
+        m_model.transform.localPosition = Vector3.MoveTowards(m_model.transform.localPosition,
+            localAimPosition,
+            m_maxMoveDelta);
+
+        if (Input.GetButtonDown("Jump"))
         {
             GameObject gobj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             gobj.transform.position = m_bow.transform.position;
             gobj.GetComponent<Collider>().isTrigger = true;
             Rigidbody rb = gobj.AddComponent<Rigidbody>();
             rb.useGravity = false;
-            rb.velocity = m_bow.transform.forward * m_curSpeed * 50;
+            rb.velocity = m_bow.transform.forward * 50;
         }
     }
+
+    /// <summary>
+    /// Update is called once per frame.
+    /// </summary>
+//    public void FixedUpdate()
+//    {
+//        
+//        m_curVelocity =
+//        float displacement = m_curSpeed * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
+//        transform.position += transform.forward * displacement;
+//        m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
+
+        //m_curSpeed = Mathf.Min(m_topSpeed, m_curSpeed + m_acceleration * Time.deltaTime);
+        //if (m_mode == FlightMode.ALL_RANGE)
+        //{
+        //    float displacement = m_curVelocity * Time.deltaTime + (0.5f * m_acceleration * Time.deltaTime * Time.deltaTime);
+        //    transform.position += transform.forward * displacement;
+        //    m_curVelocity = Mathf.Min(m_topSpeed, m_curVelocity + m_acceleration * Time.deltaTime);
+
+        //    Vector3 curRotation = transform.rotation.eulerAngles;
+        //    transform.rotation = Quaternion.Euler(-Input.GetAxis("Vertical") * m_verticalRotationMultiplier,
+        //                                          curRotation.y + Input.GetAxis("Horizontal") * m_horizontalRotationMultiplier, 0);
+        //    m_model.transform.localRotation = Quaternion.Euler(Input.GetAxis("Horizontal") * m_horizontalRotationMultiplier * 20,
+        //        90f, 0f);
+        //}
+        //else if (m_mode == FlightMode.ON_RAILS)
+        //{
+//        transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * m_horizontalPositionMultiplier, 
+//            Input.GetAxis("Vertical") * m_verticalPositionMultiplier, 0.0f);
+//        transform.localRotation = Quaternion.Euler(Input.GetAxis("Vertical") * m_verticalRotationMultiplier,
+//            0f, -Input.GetAxis("Horizontal") * m_horizontalRotationMultiplier);
+        //}
+
+        //if (Input.GetAxis("Jump") > 0)
+        //{
+        //    GameObject gobj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //    gobj.transform.position = m_bow.transform.position;
+        //    gobj.GetComponent<Collider>().isTrigger = true;
+        //    Rigidbody rb = gobj.AddComponent<Rigidbody>();
+        //    rb.useGravity = false;
+        //    rb.velocity = m_bow.transform.forward * m_curVelocity * 50;
+        //}
+//    }
 }
 

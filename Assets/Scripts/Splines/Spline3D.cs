@@ -11,46 +11,22 @@ public class Spline3D : BaseSpline
     private List<Cubic> m_yCubics;
     private List<Cubic> m_zCubics;
 
-    public void Start()
+    public void Awake()
     {
-        this.m_points = new List<Vector3>();
-        this.m_xCubics = new List<Cubic>();
-        this.m_yCubics = new List<Cubic>();
-        this.m_zCubics = new List<Cubic>();
-
-        if (m_knots != null)
-        {
-            foreach (Transform knot in m_knots)
-            {
-                m_points.Add(knot.position);
-            }
-        }
+        SetupPoints ();
     }
 
     public void OnDrawGizmos()
     {
-        Start();
-
-        if (m_knots.Length > 0)
+        if ((!Application.isPlaying) && (m_knots.Length > 0))
         {
-            CalcSpline();
-            for (int i = 0; i < 20; i++)
-            {
-                Gizmos.DrawLine(GetPoint(1.0f * i / 20), GetPoint(1.0f * (i + 1) / 20));
-            }
+            SetupPoints ();
         }
-    }
 
-    //public void AddPoint(Vector3 point)
-    //{
-    //    this.points.Add(point);
-    //}
-
-    public void CalcSpline()
-    {
-        CalcNaturalCubic(m_points, m_xCubics, 0);
-        CalcNaturalCubic(m_points, m_yCubics, 1);
-        CalcNaturalCubic(m_points, m_zCubics, 2);
+        for (int i = 0; i < 20; i++)
+        {
+            Gizmos.DrawLine(GetPoint(1.0f * i / 20), GetPoint(1.0f * (i + 1) / 20));
+        }
     }
 
     public Vector3 GetPoint(float position)
@@ -68,5 +44,30 @@ public class Spline3D : BaseSpline
         return new Vector3(m_xCubics[cubicNum].Eval(cubicPos),
                    m_yCubics[cubicNum].Eval(cubicPos),
                    m_zCubics[cubicNum].Eval(cubicPos));
+    }
+
+    private void CalcSpline()
+    {
+        CalcNaturalCubic(m_points, m_xCubics, 0);
+        CalcNaturalCubic(m_points, m_yCubics, 1);
+        CalcNaturalCubic(m_points, m_zCubics, 2);
+    }
+
+    private void SetupPoints()
+    {
+        this.m_points = new List<Vector3>();
+        this.m_xCubics = new List<Cubic>();
+        this.m_yCubics = new List<Cubic>();
+        this.m_zCubics = new List<Cubic>();
+
+        if (m_knots.Length > 0)
+        {
+            foreach (Transform knot in m_knots)
+            {
+                m_points.Add(knot.position);
+            }
+        }
+
+        CalcSpline();
     }
 }

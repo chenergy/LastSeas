@@ -6,11 +6,11 @@ public class Attack_Bombard : Attack
     public float m_maxRange = 1.0f;
     public GameObject m_targetObject;
 
-    private BattleManager m_battleManager;
+    //private BattleManager m_battleManager;
 
     public void Awake()
     {
-        m_battleManager = FindObjectOfType<BattleManager>();
+        //m_battleManager = FindObjectOfType<BattleManager>();
     }
 
     public void Update()
@@ -43,7 +43,7 @@ public class Attack_Bombard : Attack
             yield return new WaitForEndOfFrame();
         }
 
-        m_battleManager.m_hasAttacked = true;
+        //m_battleManager.m_hasAttacked = true;
     }
 }
 
