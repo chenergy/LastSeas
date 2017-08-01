@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public Transform m_target;
 
-    public float m_lerpSpeed = 1f;
+    public float m_maxDistanceDelta = 1f;
 
     private const float MAX_HORIZONTAL_DISPLACEMENT = 10f;
     private const float MAX_VERTICAL_DISPLACEMENT = 10f;
@@ -53,7 +53,11 @@ public class CameraController : MonoBehaviour
         Vector3 target = m_target.transform.localPosition;
         target.x = Mathf.Clamp(target.x, -MAX_HORIZONTAL_DISPLACEMENT, MAX_HORIZONTAL_DISPLACEMENT);
         target.y = Mathf.Clamp(target.y, -MAX_VERTICAL_DISPLACEMENT, MAX_VERTICAL_DISPLACEMENT);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * m_lerpSpeed);
+
+//        transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * m_lerpSpeed);
+        float step = m_maxDistanceDelta * Time.deltaTime;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, step);
+
         //float width = m_canvasTransform.sizeDelta.x;
         //float height = m_canvasTransform.sizeDelta.y;
 //        float width = Screen.width;

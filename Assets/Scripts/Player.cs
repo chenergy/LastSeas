@@ -4,14 +4,14 @@ using System.Collections;
 /// <summary>
 /// Airship controlled by the player in the scene.
 /// </summary>
-public class Player : Airship
+public class Player : MonoBehaviour
 {
     public AimTarget m_aimTarget;
 
     /// <summary>
     /// Reference to the base model object contained in the GameObject.
     /// </summary>
-    public Transform m_model;
+    public GameObject m_model;
     public Transform m_bow;
     public Transform m_port;
     public Transform m_starboard;
@@ -19,14 +19,16 @@ public class Player : Airship
     /// <summary>
     /// Mode showing how the flight should behave.
     /// </summary>
-    public enum FlightMode { ALL_RANGE, ON_RAILS };
+//    public enum FlightMode { ALL_RANGE, ON_RAILS };
 
     /// <summary>
     /// The mode the airship is currently in.
     /// </summary>
-    public FlightMode m_mode = FlightMode.ALL_RANGE;
+//    public FlightMode m_mode = FlightMode.ALL_RANGE;
 
-    private float m_maxMoveDelta = .1f;
+    public float m_maxMoveDelta = 0.1f;
+//    public float m_maxRadiansDelta = 0.5f;
+//    public float m_maxMagnitudeDelta = 0.0f;
 
     /// <summary>
     /// Check whether player can be accessed.
@@ -47,19 +49,37 @@ public class Player : Airship
 
     public void Update()
     {
+        m_model.transform.LookAt(m_aimTarget.m_farTarget);
+
+//        float stepRotation = m_maxRadiansDelta * Time.deltaTime;
+//        m_model.transform.forward = Vector3.RotateTowards(m_model.transform.forward, (m_aimTarget.m_farTarget.position - m_model.transform.position), stepRotation, m_maxMagnitudeDelta);
+
 //        transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * m_horizontalPositionMultiplier, 
 //            Input.GetAxis("Vertical") * m_verticalPositionMultiplier, 0.0f);
 //        transform.localRotation = Quaternion.Euler(Input.GetAxis("Vertical") * m_verticalRotationMultiplier,
 //            0f, -Input.GetAxis("Horizontal") * m_horizontalRotationMultiplier);
-        m_model.transform.LookAt(m_aimTarget.m_farTarget);
-        Vector3 viewportPoint = new Vector3(m_aimTarget.TargetViewportPosition.x, 
-                                    m_aimTarget.TargetViewportPosition.y,
-                                    AimTarget.FAR_TARGET_MAX_DISTANCE);
-        Vector3 aimTargetPosition = Camera.main.ViewportToWorldPoint(viewportPoint);
-        Vector3 localAimPosition = m_model.transform.InverseTransformPoint(aimTargetPosition);
+
+//        Vector3 viewportPoint = new Vector3(m_aimTarget.TargetViewportPosition.x, 
+//                                    m_aimTarget.TargetViewportPosition.y,
+//                                    AimTarget.FAR_TARGET_MAX_DISTANCE);
+//        Vector3 aimTargetPosition = Camera.main.ViewportToWorldPoint(viewportPoint);
+//        Vector3 localAimPosition = m_model.transform.InverseTransformPoint(aimTargetPosition);
+//        m_model.transform.localPosition = Vector3.MoveTowards(m_model.transform.localPosition,
+//            localAimPosition,
+//            m_maxMoveDelta);
+
+//        Vector3 localAimPosition = m_model.transform.InverseTransformPoint(m_aimTarget.m_farTarget.position);
+//        m_model.transform.localPosition = Vector3.MoveTowards(m_model.transform.localPosition,
+//            new Vector3(localAimPosition.x, localAimPosition.y, 0),
+//            m_maxMoveDelta);
+
+        float stepPosition = m_maxMoveDelta * Time.deltaTime;
+        Vector3 screenTargetPosition = Camera.main.WorldToScreenPoint(m_aimTarget.m_farTarget.position);
+        Vector3 localTargetPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenTargetPosition.x, screenTargetPosition.y, 15f));
+        localTargetPosition = transform.InverseTransformPoint(localTargetPosition);
         m_model.transform.localPosition = Vector3.MoveTowards(m_model.transform.localPosition,
-            localAimPosition,
-            m_maxMoveDelta);
+            new Vector3(localTargetPosition.x, localTargetPosition.y, 0),
+            stepPosition);
 
         if (Input.GetButtonDown("Jump"))
         {

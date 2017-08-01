@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target: {fileID: 1549202880}
-  m_lerpSpeed: 1
+  m_maxDistanceDelta: 1
 --- !u!4 &79626825
 Transform:
   m_ObjectHideFlags: 0
@@ -507,16 +507,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d0531e54a5f49708e2f2a2ef6a5b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_charactersOnboard: 0000000001000000
-  m_topSpeed: 10
-  m_acceleration: 5
-  m_animator: {fileID: 1967370746}
   m_aimTarget: {fileID: 449198211}
-  m_model: {fileID: 1549202880}
+  m_model: {fileID: 1549202877}
   m_bow: {fileID: 979671599}
   m_port: {fileID: 257266070}
   m_starboard: {fileID: 2141975844}
-  m_mode: 1
+  m_maxMoveDelta: 3
 --- !u!1 &979671598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1437,7 @@ Transform:
   m_GameObject: {fileID: 2012133850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 449198210}
   m_RootOrder: 0
@@ -1512,7 +1508,7 @@ Transform:
   m_GameObject: {fileID: 2044324826}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 449198210}
   m_RootOrder: 1
