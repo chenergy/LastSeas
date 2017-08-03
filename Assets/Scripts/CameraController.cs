@@ -56,7 +56,8 @@ public class CameraController : MonoBehaviour
 
 //        transform.localPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * m_lerpSpeed);
         float step = m_maxDistanceDelta * Time.deltaTime;
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, step);
+//        transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, step);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, target, step);
 
         //float width = m_canvasTransform.sizeDelta.x;
         //float height = m_canvasTransform.sizeDelta.y;

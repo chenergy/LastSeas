@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Reference to the base model object contained in the GameObject.
     /// </summary>
-    public GameObject m_model;
+//    public GameObject m_model;
     public Transform m_bow;
     public Transform m_port;
     public Transform m_starboard;
@@ -46,10 +46,11 @@ public class Player : MonoBehaviour
     /// </summary>
 //    public float m_verticalRotationMultiplier = 15f;
 //    public float m_verticalPositionMultiplier = 10f;
+//    public Transform t;
 
     public void Update()
     {
-        m_model.transform.LookAt(m_aimTarget.m_farTarget);
+        transform.LookAt(m_aimTarget.m_farTarget);
 
 //        float stepRotation = m_maxRadiansDelta * Time.deltaTime;
 //        m_model.transform.forward = Vector3.RotateTowards(m_model.transform.forward, (m_aimTarget.m_farTarget.position - m_model.transform.position), stepRotation, m_maxMagnitudeDelta);
@@ -73,13 +74,20 @@ public class Player : MonoBehaviour
 //            new Vector3(localAimPosition.x, localAimPosition.y, 0),
 //            m_maxMoveDelta);
 
-        float stepPosition = m_maxMoveDelta * Time.deltaTime;
+        float step = m_maxMoveDelta * Time.deltaTime;
         Vector3 screenTargetPosition = Camera.main.WorldToScreenPoint(m_aimTarget.m_farTarget.position);
-        Vector3 localTargetPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenTargetPosition.x, screenTargetPosition.y, 15f));
-        localTargetPosition = transform.InverseTransformPoint(localTargetPosition);
-        m_model.transform.localPosition = Vector3.MoveTowards(m_model.transform.localPosition,
-            new Vector3(localTargetPosition.x, localTargetPosition.y, 0),
-            stepPosition);
+        Vector3 localTargetPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenTargetPosition.x, screenTargetPosition.y, -Camera.main.transform.localPosition.z));
+//        localTargetPosition = transform.InverseTransformPoint(localTargetPosition);
+//        t.localPosition = localTargetPosition;
+//        transform.localPosition = Vector3.MoveTowards(transform.localPosition,
+//            new Vector3(localTargetPosition.x, localTargetPosition.y, 0),
+//            step);
+//        Debug.Log(localTargetPosition);
+        transform.position = Vector3.Lerp(transform.position, localTargetPosition, step);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+//        transform.localPosition = Vector3.Lerp(transform.localPosition,
+//            new Vector3(m_aimTarget.m_farTarget.localPosition.x, m_aimTarget.m_farTarget.localPosition.y, 0),
+//            step);
 
         if (Input.GetButtonDown("Jump"))
         {
