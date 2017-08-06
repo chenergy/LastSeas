@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Spline3D : BaseSpline
 {
+    public int m_divisions = 20;
     public Transform[] m_knots;
 
     private List<Vector3> m_points;
@@ -23,9 +24,9 @@ public class Spline3D : BaseSpline
             SetupPoints ();
         }
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < m_divisions; i++)
         {
-            Gizmos.DrawLine(GetPoint(1.0f * i / 20), GetPoint(1.0f * (i + 1) / 20));
+            Gizmos.DrawLine(GetPoint(1.0f * i / m_divisions), GetPoint(1.0f * (i + 1) / m_divisions));
         }
     }
 

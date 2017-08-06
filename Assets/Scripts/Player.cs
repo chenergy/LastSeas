@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public Transform m_port;
     public Transform m_starboard;
 
+    public GameObject m_projectile;
+
     /// <summary>
     /// Mode showing how the flight should behave.
     /// </summary>
@@ -91,12 +93,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            GameObject gobj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            gobj.transform.position = m_bow.transform.position;
-            gobj.GetComponent<Collider>().isTrigger = true;
-            Rigidbody rb = gobj.AddComponent<Rigidbody>();
-            rb.useGravity = false;
-            rb.velocity = m_bow.transform.forward * 50;
+            Projectile projectile = Instantiate(m_projectile).GetComponent<Projectile>();
+            projectile.transform.position = m_bow.transform.position;
+            projectile.transform.forward = m_bow.transform.forward;
+//            GameObject gobj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+//            gobj.transform.position = m_bow.transform.position;
+//            gobj.GetComponent<Collider>().isTrigger = true;
+//            Rigidbody rb = gobj.AddComponent<Rigidbody>();
+//            rb.useGravity = false;
+//            rb.velocity = m_bow.transform.forward * 50;
         }
     }
 
