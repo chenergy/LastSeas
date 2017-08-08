@@ -20,6 +20,9 @@ public class SplineFollower : MonoBehaviour
     public bool m_lockYRotation;
     public bool m_lockZRotation;
 
+    private float m_deltaT;
+    private int m_divisions = 1000;
+
     /// <summary>
     /// The current position of the transform.
     /// </summary>
@@ -30,6 +33,14 @@ public class SplineFollower : MonoBehaviour
     /// </summary>
     public void Start()
     {
+        float length = 0;
+        for (int i = 0; i < m_divisions; i++)
+        {
+            length += Vector3.Distance(m_spline.GetPoint((i + 1) * 1.0f / m_divisions), m_spline.GetPoint(i * 1.0f / m_divisions));
+        }
+
+        m_deltaT = 1.0f / length;
+
         m_lastPos = m_spline.GetPoint(0);
         StartCoroutine(_FollowPathRoutine());
     }
@@ -43,7 +54,7 @@ public class SplineFollower : MonoBehaviour
         float t = 0.0f;
         while (t < 1.0f)
         {
-            t += Time.deltaTime * m_speed;
+            t += Time.deltaTime * m_deltaT * m_speed;
             t = Mathf.Clamp(t, 0.0f, 1.0f);
             Vector3 nextPos = m_spline.GetPoint(t);
             transform.position = m_lastPos;
