@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Spline3D : BaseSpline
 {
+    public bool m_showSplineInEditor = true;
     public int m_divisions = 20;
     public Transform[] m_knots;
 
@@ -14,14 +15,19 @@ public class Spline3D : BaseSpline
 
     public void Awake()
     {
-        SetupPoints ();
+        SetupPoints();
     }
 
     public void OnDrawGizmos()
     {
         if ((!Application.isPlaying) && (m_knots.Length > 0))
         {
-            SetupPoints ();
+            SetupPoints();
+        }
+
+        if (!m_showSplineInEditor)
+        {
+            return;
         }
 
         for (int i = 0; i < m_divisions; i++)

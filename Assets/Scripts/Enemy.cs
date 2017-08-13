@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public void DestroySelf()
     {
-        
+        Destroy(gameObject);
     }
 }
 

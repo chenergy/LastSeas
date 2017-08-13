@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     /// Reference to the base model object contained in the GameObject.
     /// </summary>
 //    public GameObject m_model;
+    /// <summary>
+    /// The animator attached to the ship objects.
+    /// </summary>
+    public Animator m_animator;
+
     public Transform m_bow;
     public Transform m_port;
     public Transform m_starboard;
@@ -49,10 +54,16 @@ public class Player : MonoBehaviour
 //    public float m_verticalRotationMultiplier = 15f;
 //    public float m_verticalPositionMultiplier = 10f;
 //    public Transform t;
+    private float m_eulerZ;
+
+    public void Start()
+    {
+        m_animator.SetFloat("Speed", 1f);
+    }
 
     public void Update()
     {
-        transform.LookAt(m_aimTarget.m_farTarget);
+//        transform.LookAt(m_aimTarget.m_farTarget);
 
 //        float stepRotation = m_maxRadiansDelta * Time.deltaTime;
 //        m_model.transform.forward = Vector3.RotateTowards(m_model.transform.forward, (m_aimTarget.m_farTarget.position - m_model.transform.position), stepRotation, m_maxMagnitudeDelta);
@@ -90,6 +101,31 @@ public class Player : MonoBehaviour
 //        transform.localPosition = Vector3.Lerp(transform.localPosition,
 //            new Vector3(m_aimTarget.m_farTarget.localPosition.x, m_aimTarget.m_farTarget.localPosition.y, 0),
 //            step);
+
+
+        transform.rotation = Quaternion.LookRotation(m_aimTarget.m_farTarget.position - transform.position, Vector3.up);
+        Vector3 euler = transform.localRotation.eulerAngles;
+        m_eulerZ = Mathf.Lerp(m_eulerZ, -Input.GetAxis("Horizontal") * 45, Time.deltaTime * 5);
+        transform.localRotation = Quaternion.Euler(euler.x, euler.y, m_eulerZ);
+//        Quaternion targetRotation = Quaternion.Inverse(transform.rotation) * Quaternion.LookRotation(m_aimTarget.m_farTarget.position - transform.position, Vector3.up);
+//        Vector3 euler = targetRotation.eulerAngles;
+////        targetRotation = Quaternion.Euler(euler.x, euler.y, -Mathf.Sign(Input.GetAxis("Horizontal")) * 45);
+////        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Mathf.Abs(Input.GetAxis("Horizontal")) * 45);
+//        transform.localRotation = targetRotation;
+
+//        if (Input.GetAxis("Horizontal") > 0)
+//        {
+//            targetRotation = Quaternion.Euler(euler.x, euler.y, -45f);
+//        }
+//        else if (Input.GetAxis("Horizontal") < 0)
+//        {
+//            targetRotation = Quaternion.Euler(euler.x, euler.y, 45f);
+//        }
+//        else
+//        {
+//            targetRotation = Quaternion.Euler(euler.x, euler.y, 0f);
+//        }
+//        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * 10);
 
         if (Input.GetButtonDown("Jump"))
         {
