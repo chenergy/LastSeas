@@ -6,38 +6,37 @@ using UnityEngine;
 /// </summary>
 public abstract class Airship : MonoBehaviour
 {
-    /// <summary>
-    /// The list of characters onboard the ship.
-    /// </summary>
-    public CharacterId[] m_charactersOnboard;
-
-    /// <summary>
-    /// The movement speed of the airship.
-    /// </summary>
-    public float m_topSpeed = 1;
-
-    /// <summary>
-    /// The acceleration to top speed.
-    /// </summary>
-//    public Vector3 m_acceleration = 0.1f;
-    public float m_acceleration = 0.1f;
-
-    /// <summary>
-    /// The animator attached to the ship objects.
-    /// </summary>
-    public Animator m_animator;
-
-    /// <summary>
-    /// Internal current speed for movement.
-    /// </summary>
-    protected float m_curSpeed;
+//    /// <summary>
+//    /// The list of characters onboard the ship.
+//    /// </summary>
+//    public CharacterId[] m_charactersOnboard;
+//
+//    /// <summary>
+//    /// The movement speed of the airship.
+//    /// </summary>
+//    public float m_topSpeed = 1;
+//
+//    /// <summary>
+//    /// The acceleration to top speed.
+//    /// </summary>
+//    public float m_acceleration = 0.1f;
+//
+//    /// <summary>
+//    /// The animator attached to the ship objects.
+//    /// </summary>
+//    public Animator m_animator;
+//
+//    /// <summary>
+//    /// Internal current speed for movement.
+//    /// </summary>
+//    protected float m_curSpeed;
 
     /// <summary>
     /// Use this for initialization.
     /// </summary>
-    public void Start()
-    {
-    }
+//    public void Start()
+//    {
+//    }
 
     ///// <summary>
     ///// This function is called every fixed framerate frame.

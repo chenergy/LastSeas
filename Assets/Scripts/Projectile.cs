@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public float m_speed = 5f;
 
     private Collider m_collider;
+    private string m_targetTag;
 
     public void Awake()
     {
@@ -31,28 +32,32 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == m_targetTag)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.TakeDamage(m_damage);
+            IDamageable target = other.GetComponent<IDamageable>();
+            target.TakeDamage(m_damage);
+            DestroySelf();
         }
-
-        DestroySelf();
-    }
-
-    public void Move()
-    {
-        transform.position += transform.forward * m_speed * Time.deltaTime;
-    }
-
-    public void DestroySelf()
-    {
-        Destroy(gameObject);
     }
 
     public void IgnoreCollision(Collider other)
     {
         Physics.IgnoreCollision(m_collider, other);
+    }
+
+    public void SetTargetTag(string tag)
+    {
+        m_targetTag = tag;
+    }
+
+    private void Move()
+    {
+        transform.position += transform.forward * m_speed * Time.deltaTime;
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
 

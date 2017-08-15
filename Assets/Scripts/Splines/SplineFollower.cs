@@ -64,9 +64,6 @@ public class SplineFollower : MonoBehaviour
             transform.position = m_lastPos;
 
             Vector3 newForward = (nextPos - m_lastPos);
-            //            transform.forward = new Vector3(m_lockXRotation ? transform.forward.x : newForward.x,
-            //                m_lockYRotation ? transform.forward.y : newForward.y,
-            //                m_lockZRotation ? transform.forward.z : newForward.z);
             Vector3 oldRotation = transform.rotation.eulerAngles;
             Vector3 newRotation = Quaternion.LookRotation(newForward).eulerAngles;
             newRotation = new Vector3(m_lockZRotation ? oldRotation.z : newRotation.z,

@@ -56,10 +56,7 @@ public class AimTarget : MonoBehaviour
 
         TargetViewportPosition = new Vector2(Mathf.Clamp01(TargetViewportPosition.x),
             Mathf.Clamp01(TargetViewportPosition.y));
-
-//        Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(m_curScreenPosition.x, m_curScreenPosition.y, FAR_TARGET_MAX_DISTANCE));
-
-//        m_nearTarget.position = Camera.main.ViewportToWorldPoint(new Vector3(TargetViewportPosition.x, TargetViewportPosition.y, NEAR_TARGET_MAX_DISTANCE));
+        
         m_farTarget.position = Camera.main.ViewportToWorldPoint(new Vector3(TargetViewportPosition.x, TargetViewportPosition.y, FAR_TARGET_MAX_DISTANCE));
         m_nearTarget.position = m_player.transform.position + (m_farTarget.position - m_player.transform.position) * 0.25f;
     }
