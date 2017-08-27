@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+using System;
 using System.Collections;
 
 public abstract class SplineEvent : MonoBehaviour
@@ -6,6 +8,8 @@ public abstract class SplineEvent : MonoBehaviour
     public Spline3D m_spline;
 
     public SplineFollower m_follower;
+
+    public UnityEvent m_event;
 
     [Range(0f, 1f)]
     public float m_tValueToTrigger = 0;
@@ -39,10 +43,11 @@ public abstract class SplineEvent : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        if (m_spline != null)
+        try 
         {
             Gizmos.DrawSphere(m_spline.GetPoint(m_tValueToTrigger), 1f);
         }
+        catch (NullReferenceException e) { }
     }
 
     public abstract void OnTValuePassed();

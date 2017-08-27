@@ -9,8 +9,11 @@ public class Spline3D : BaseSpline
     public Transform[] m_knots;
 
     private List<Vector3> m_points;
+    [SerializeField]
     private List<Cubic> m_xCubics;
+    [SerializeField]
     private List<Cubic> m_yCubics;
+    [SerializeField]
     private List<Cubic> m_zCubics;
 
     public void Awake()
@@ -20,20 +23,21 @@ public class Spline3D : BaseSpline
 
     public void OnDrawGizmos()
     {
-        if ((!Application.isPlaying) && (m_knots.Length > 0))
-        {
-            SetupPoints();
-        }
-
-        if (!m_showSplineInEditor)
+        if (!CanBeDrawn())
         {
             return;
         }
 
+        SetupPoints();
         for (int i = 0; i < m_divisions; i++)
         {
             Gizmos.DrawLine(GetPoint(1.0f * i / m_divisions), GetPoint(1.0f * (i + 1) / m_divisions));
         }
+    }
+
+    public bool CanBeDrawn()
+    {
+        return (m_showSplineInEditor && (m_xCubics != null) && !Application.isPlaying || (m_knots.Length > 0));
     }
 
     public Vector3 GetPoint(float position)

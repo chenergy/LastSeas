@@ -17,12 +17,15 @@ public class Player : MonoBehaviour, IDamageable
     public Transform m_starboard;
     public GameObject m_projectile;
     public float m_maxMoveDelta = 0.1f;
-    public int m_health = 10;
+    public int m_curhealth = 10;
+    public int m_totalHealth = 10;
 
     private float m_eulerZ;
+    private IngameUI m_ui;
 
     public void Start()
     {
+        m_ui = FindObjectOfType<IngameUI>();
         m_animator.SetFloat("Speed", 1f);
     }
 
@@ -59,11 +62,14 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        m_health -= damage;
-        if (m_health <= 0)
+        m_curhealth -= damage;
+        if (m_curhealth <= 0)
         {
+            m_curhealth = 0;
             DestroySelf();
         }
+
+        m_ui.SetPlayerHealthFill(1.0f * m_curhealth / m_totalHealth);
     }
 
     public void DestroySelf()
