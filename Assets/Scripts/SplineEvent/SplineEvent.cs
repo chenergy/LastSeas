@@ -3,25 +3,29 @@ using UnityEngine.Events;
 using System;
 using System.Collections;
 
-public abstract class SplineEvent : MonoBehaviour
+public class SplineEvent : MonoBehaviour
 {
     public Spline3D m_spline;
-
     public SplineFollower m_follower;
 
-    public UnityEvent m_event;
-
+    [Header("Start Event")]
     [Range(0f, 1f)]
-    public float m_tValueToTrigger = 0;
+    public float m_startTValue = 0;
+    public UnityEvent m_startEvent;
 
-    private bool m_triggered = false;
+    [Header("End Event")]
+    [Range(0f, 1f)]
+    public float m_endTValue = 1f;
+    public UnityEvent m_endEvent;
+
+    private bool triggered = false;
+    private bool completed = false;
 
     /// <summary>
     /// Use this for initialization.
     /// </summary>
     public void Start()
     {
-	
     }
 	
     /// <summary>
@@ -29,15 +33,29 @@ public abstract class SplineEvent : MonoBehaviour
     /// </summary>
     public void Update()
     {
-        if (m_triggered)
+        // Skip if completed.
+        if (completed)
         {
             return;
         }
 
-        if (m_follower.TValue > m_tValueToTrigger)
+        if (!triggered)
         {
-            m_triggered = true;
-            OnTValuePassed();
+            // Wait for staring t value.
+            if (m_follower.TValue > m_startTValue)
+            {
+                triggered = true;
+                OnStart();
+            }
+        }
+        else
+        {
+            // Wait for ending t value.
+            if (m_follower.TValue > m_endTValue)
+            {
+                completed = true;
+                OnEnd();
+            }
         }
     }
 
@@ -45,11 +63,24 @@ public abstract class SplineEvent : MonoBehaviour
     {
         try 
         {
-            Gizmos.DrawSphere(m_spline.GetPoint(m_tValueToTrigger), 1f);
+            Color c = Gizmos.color;
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(m_spline.GetPoint(m_startTValue), Vector3.one);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(m_spline.GetPoint(m_endTValue), Vector3.one);
+            Gizmos.color = c;
         }
         catch (NullReferenceException e) { }
     }
 
-    public abstract void OnTValuePassed();
+    public void OnStart()
+    {
+        m_startEvent.Invoke();
+    }
+
+    public void OnEnd()
+    {
+        m_endEvent.Invoke();
+    }
 }
 

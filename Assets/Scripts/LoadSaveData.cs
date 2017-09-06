@@ -12,70 +12,37 @@ using UnityEngine;
 public class LoadSaveData
 {
     /// <summary>
-    /// List of saved character data.
-    /// </summary>
-//    public CharacterSavedData[] m_savedCharacterData;
-
-    /// <summary>
-    /// The DateTime of the last saved data.
-    /// </summary>
-//    public DateTime m_dateLastSaved;
-
-    /// <summary>
-    /// The amount of currency assigned to the player.
-    /// </summary>
-//    public int m_currency;
-
-    /// <summary>
     /// Static reference to any loaded saved data.
     /// </summary>
-//    private static LoadSaveData m_savedData = new LoadSaveData();
-//    public static LoadSaveData LastSavedData
-//    {
-//        get { return m_savedData; }
-//    }
-    public static SaveFile LoadedSaveFile { get; private set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SavedData"/> class.
-    /// </summary>
-//    public LoadSaveData()
-//    {
-//        m_savedCharacterData = new CharacterSavedData[4];
-//        for (int i = 0; i < m_savedCharacterData.Length; i++)
-//        {
-//            m_savedCharacterData[i] = new CharacterSavedData();
-//        }
-//    }
+    private static SaveFile LoadedSaveFile { get; set; }
 
     /// <summary>
     /// Gets the character saved data.
     /// </summary>
     /// <returns>The character saved data.</returns>
     /// <param name="name">Name of the character.</param>
-    public static SaveDataCharacter GetCharacterSavedData(CharacterId name)
+    public static bool GetCharacterSavedData(CharacterId name, out CharacterSaveData data)
     {
-//        if (((int)name) < m_savedCharacterData.Length)
-//        {
-//            return m_savedCharacterData[(int)name];
-//        }
+        data = null;
         if (LoadedSaveFile != null)
         {
             Debug.Log("No loaded save file.");
-            return null;
+            return false;
         }
 
         for (int i = 0; i < LoadedSaveFile.m_savedCharacterData.Length; i++)
         {
-            SaveDataCharacter character = LoadedSaveFile.m_savedCharacterData[i];
+            CharacterSaveData character = LoadedSaveFile.m_savedCharacterData[i];
             if (character.m_id == name)
             {
-                return character;
+//                return character;
+                data = character;
+                return true;
             }
         }
 
-        Debug.Log("Could not find character with name");
-        return null;
+        Debug.LogError(string.Format("Could not find character with name {0}", name.ToString()));
+        return false;
     }
 
     /// <summary>
@@ -89,9 +56,10 @@ public class LoadSaveData
     {
         
 //        if (((int)name) < m_savedCharacterData.Length)
-        SaveDataCharacter character = GetCharacterSavedData(name);
-        if (character == null)
+        CharacterSaveData character;
+        if (GetCharacterSavedData(name, out character))
         {
+            Debug.LogError(string.Format("Could not find character with name {0}", name.ToString()));
             return;
         }
 
@@ -141,21 +109,21 @@ public class LoadSaveData
 }
 
 [System.Serializable]
-public class SaveFile
+class SaveFile
 {
     public SaveFile()
     {
-        m_savedCharacterData = new SaveDataCharacter[4];
-        m_savedCharacterData[0] = new SaveDataCharacter(CharacterId.PICARD);
-        m_savedCharacterData[1] = new SaveDataCharacter(CharacterId.LAFORGE);
-        m_savedCharacterData[2] = new SaveDataCharacter(CharacterId.RIKER);
-        m_savedCharacterData[3] = new SaveDataCharacter(CharacterId.WORF);
+        m_savedCharacterData = new CharacterSaveData[4];
+        m_savedCharacterData[0] = new CharacterSaveData(CharacterId.PICARD);
+        m_savedCharacterData[1] = new CharacterSaveData(CharacterId.LAFORGE);
+        m_savedCharacterData[2] = new CharacterSaveData(CharacterId.RIKER);
+        m_savedCharacterData[3] = new CharacterSaveData(CharacterId.WORF);
     }
 
     /// <summary>
     /// List of saved character data.
     /// </summary>
-    public SaveDataCharacter[] m_savedCharacterData;
+    public CharacterSaveData[] m_savedCharacterData;
 
     /// <summary>
     /// The DateTime of the last saved data.
@@ -172,9 +140,9 @@ public class SaveFile
 /// Character saved data.
 /// </summary>
 [System.Serializable]
-public class SaveDataCharacter
+public class CharacterSaveData
 {
-    public SaveDataCharacter(CharacterId id)
+    public CharacterSaveData(CharacterId id)
     {
         m_id = id;
     }

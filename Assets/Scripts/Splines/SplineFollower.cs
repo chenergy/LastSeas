@@ -46,6 +46,7 @@ public class SplineFollower : MonoBehaviour
         m_deltaT = 1.0f / length;
 
         m_lastPos = m_spline.GetPoint(0);
+        SetPositionOnSpline(0);
 //        StartCoroutine(_FollowPathRoutine());
     }
 
@@ -60,18 +61,28 @@ public class SplineFollower : MonoBehaviour
         {
             TValue += Time.deltaTime * m_deltaT * m_speed;
             TValue = Mathf.Clamp(TValue, 0.0f, 1.0f);
-            Vector3 nextPos = m_spline.GetPoint(TValue);
-            transform.position = m_lastPos;
-
-            Vector3 newForward = (nextPos - m_lastPos);
-            Vector3 oldRotation = transform.rotation.eulerAngles;
-            Vector3 newRotation = Quaternion.LookRotation(newForward).eulerAngles;
-            newRotation = new Vector3(m_lockZRotation ? oldRotation.z : newRotation.z,
-                m_lockYRotation ? oldRotation.y : newRotation.y,
-                m_lockXRotation ? oldRotation.x : newRotation.x);
-            transform.rotation = Quaternion.Euler(newRotation);
-            m_lastPos = nextPos;
+            SetPositionOnSpline(TValue);
         }
+    }
+
+    public void SetFollowingEnabled(bool enabled)
+    {
+        m_following = enabled;
+    }
+
+    private void SetPositionOnSpline(float t)
+    {
+        Vector3 nextPos = m_spline.GetPoint(TValue);
+        transform.position = m_lastPos;
+
+        Vector3 newForward = (nextPos - m_lastPos);
+        Vector3 oldRotation = transform.rotation.eulerAngles;
+        Vector3 newRotation = Quaternion.LookRotation(newForward).eulerAngles;
+        newRotation = new Vector3(m_lockZRotation ? oldRotation.z : newRotation.z,
+            m_lockYRotation ? oldRotation.y : newRotation.y,
+            m_lockXRotation ? oldRotation.x : newRotation.x);
+        transform.rotation = Quaternion.Euler(newRotation);
+        m_lastPos = nextPos;
     }
 
 //    /// <summary>

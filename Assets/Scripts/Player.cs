@@ -45,7 +45,7 @@ public class Player : MonoBehaviour, IDamageable
         m_eulerZ = Mathf.Lerp(m_eulerZ, -Input.GetAxis("Horizontal") * 45, Time.deltaTime * 5);
         transform.localRotation = Quaternion.Euler(euler.x, euler.y, m_eulerZ);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Projectile projectile = Instantiate(m_projectile).GetComponent<Projectile>();
             projectile.transform.position = m_bow.transform.position;
