@@ -74,12 +74,38 @@ public class Database : ScriptableObject
 /// <summary>
 /// Character name.
 /// </summary>
-public enum CharacterId { PICARD, RIKER, LAFORGE, WORF };
+public enum CharacterId
+{ 
+    PICARD = 0, 
+    RIKER = 1, 
+    LAFORGE = 2, 
+    WORF = 3 
+};
 
 /// <summary>
 /// Attack name.
 /// </summary>
-public enum AttackName { BOMBARD };
+public enum AttackName 
+{ 
+    BOMBARD
+};
+
+/// <summary>
+/// Item identifier.
+/// </summary>
+public enum ItemId
+{
+    NONE = 0,
+    BOMB = 1
+};
+
+/// <summary>
+/// Airship identifier.
+/// </summary>
+public enum AirshipId
+{
+    BASIC = 0
+};
 
 /// <summary>
 /// Character data.

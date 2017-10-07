@@ -16,6 +16,19 @@ public class LoadSaveData
     /// </summary>
     private static SaveFile LoadedSaveFile { get; set; }
 
+    public static bool GetCurrentCharacters(out CharacterId[] data)
+    {
+        data = null;
+        if (LoadedSaveFile == null)
+        {
+            Debug.Log("No loaded save file.");
+            return false;
+        }
+
+        data = LoadedSaveFile.m_curCharacters;
+        return true;
+    }
+
     /// <summary>
     /// Gets the character saved data.
     /// </summary>
@@ -24,7 +37,7 @@ public class LoadSaveData
     public static bool GetCharacterSavedData(CharacterId name, out CharacterSaveData data)
     {
         data = null;
-        if (LoadedSaveFile != null)
+        if (LoadedSaveFile == null)
         {
             Debug.Log("No loaded save file.");
             return false;
@@ -45,6 +58,19 @@ public class LoadSaveData
         return false;
     }
 
+    public static bool GetInventoryData(out InventorySaveData data)
+    {
+        data = null;
+        if (LoadedSaveFile == null)
+        {
+            Debug.Log("No loaded save file.");
+            return false;
+        }
+
+        data = LoadedSaveFile.m_inventory;
+        return true;
+    }
+
     /// <summary>
     /// Updates the character data of given name with parameters.
     /// </summary>
@@ -54,7 +80,6 @@ public class LoadSaveData
     /// <param name="curEnergy">Current energy.</param>
     public static void UpdateCharacterData(CharacterId name, int experience, int curHealth, int curEnergy)
     {
-        
 //        if (((int)name) < m_savedCharacterData.Length)
         CharacterSaveData character;
         if (GetCharacterSavedData(name, out character))
@@ -73,6 +98,7 @@ public class LoadSaveData
     /// </summary>
     public static void Save()
     {
+        Debug.Log("Saving.");
         if (LoadedSaveFile == null)
         {
             Debug.Log("No save file. Creating new.");
@@ -92,6 +118,7 @@ public class LoadSaveData
     /// </summary>
     public static void Load()
     {
+        Debug.Log("Loading.");
         if (File.Exists(Application.persistentDataPath + "/savedData.gd"))
         {
             XmlSerializer bf = new XmlSerializer(typeof(SaveFile));
@@ -109,21 +136,17 @@ public class LoadSaveData
 }
 
 [System.Serializable]
-class SaveFile
+public class SaveFile
 {
-    public SaveFile()
-    {
-        m_savedCharacterData = new CharacterSaveData[4];
-        m_savedCharacterData[0] = new CharacterSaveData(CharacterId.PICARD);
-        m_savedCharacterData[1] = new CharacterSaveData(CharacterId.LAFORGE);
-        m_savedCharacterData[2] = new CharacterSaveData(CharacterId.RIKER);
-        m_savedCharacterData[3] = new CharacterSaveData(CharacterId.WORF);
-    }
-
     /// <summary>
     /// List of saved character data.
     /// </summary>
     public CharacterSaveData[] m_savedCharacterData;
+
+    /// <summary>
+    /// List of items in inventory.
+    /// </summary>
+    public InventorySaveData m_inventory;
 
     /// <summary>
     /// The DateTime of the last saved data.
@@ -134,6 +157,34 @@ class SaveFile
     /// The amount of currency assigned to the player.
     /// </summary>
     public int m_currency;
+
+    public CharacterId[] m_curCharacters;
+    public ItemId[] m_curItems;
+    public AirshipId m_curShip;
+
+    public SaveFile()
+    {
+        m_inventory = new InventorySaveData();
+
+        m_savedCharacterData = new CharacterSaveData[4];
+        m_savedCharacterData[0] = new CharacterSaveData(CharacterId.PICARD);
+        m_savedCharacterData[1] = new CharacterSaveData(CharacterId.LAFORGE);
+        m_savedCharacterData[2] = new CharacterSaveData(CharacterId.RIKER);
+        m_savedCharacterData[3] = new CharacterSaveData(CharacterId.WORF);
+
+        m_currency = 0;
+        m_dateLastSaved = DateTime.Today;
+
+        m_curCharacters = new CharacterId[]
+        {
+            CharacterId.PICARD,
+            CharacterId.LAFORGE,
+            CharacterId.RIKER,
+            CharacterId.WORF
+        };
+        m_curItems = new ItemId[2];
+        m_curShip = AirshipId.BASIC;
+    }
 }
 
 /// <summary>
@@ -142,13 +193,32 @@ class SaveFile
 [System.Serializable]
 public class CharacterSaveData
 {
-    public CharacterSaveData(CharacterId id)
-    {
-        m_id = id;
-    }
-
     public CharacterId m_id;
     public int m_experience;
     public int m_curHealth;
     public int m_curEnergy;
+
+    public CharacterSaveData()
+    {
+    }
+
+    public CharacterSaveData(CharacterId id)
+    {
+        m_id = id;
+    }
 }
+
+/// <summary>
+/// Inventory save data.
+/// </summary>
+[System.Serializable]
+public class InventorySaveData
+{
+    public int[] m_items;
+
+    public InventorySaveData()
+    {
+        m_items = new int[2];
+    }
+}
+

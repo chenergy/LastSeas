@@ -2822,11 +2822,11 @@ RectTransform:
   m_Father: {fileID: 1602186295}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 10}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
   m_SizeDelta: {x: 300, y: 30}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &1477633013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 1602186292}
   - component: {fileID: 1602186296}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MissionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

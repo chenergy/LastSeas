@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class IngameUI : MonoBehaviour
+public class MissionUI : MonoBehaviour
 {
-    public UnityEngine.UI.Image m_healthImage;
+    public Image m_healthImage;
 
     public void Start()
     {

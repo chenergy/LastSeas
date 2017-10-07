@@ -21,11 +21,11 @@ public class Player : MonoBehaviour, IDamageable
     public int m_totalHealth = 10;
 
     private float m_eulerZ;
-    private IngameUI m_ui;
+    private MissionUI m_ui;
 
     public void Start()
     {
-        m_ui = FindObjectOfType<IngameUI>();
+        m_ui = FindObjectOfType<MissionUI>();
         m_animator.SetFloat("Speed", 1f);
     }
 

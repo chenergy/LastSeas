@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public void Awake()
     {
         m_collider = GetComponent<Collider>();
+        Destroy(gameObject, 10f);
     }
 
     /// <summary>
