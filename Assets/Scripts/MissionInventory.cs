@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class MissionInventory
 {
-    private Dictionary<ItemId, int> m_equippedItems;
+    public Dictionary<ItemId, int> m_equippedItems;
 
     // Use this for initialization
     public MissionInventory(int[] items)

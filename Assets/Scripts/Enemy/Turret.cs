@@ -19,7 +19,7 @@ public class Turret : BaseEnemy
     /// </summary>
     public void Start()
     {
-        SetTarget(GameObject.FindGameObjectWithTag("Player").transform);
+//        SetTarget(GameObject.FindGameObjectWithTag("Player").transform);
     }
 	
     /// <summary>
@@ -59,6 +59,11 @@ public class Turret : BaseEnemy
     public void SetTarget(Transform target)
     {
         m_target = target;
+    }
+
+    public void ClearTarget()
+    {
+        m_target = null;
     }
 
     public void Fire()

@@ -48,7 +48,6 @@ public class LoadSaveData
             CharacterSaveData character = LoadedSaveFile.m_savedCharacterData[i];
             if (character.m_id == name)
             {
-//                return character;
                 data = character;
                 return true;
             }

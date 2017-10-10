@@ -1,75 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-
-/// <summary>
-/// Database.
-/// </summary>
-[System.Serializable]
-public class Database : ScriptableObject
-{
-    /// <summary>
-    /// The static instance of the database.
-    /// </summary>
-    private static Database m_instance = null;
-    public static Database Instance
-    {
-        get
-        {
-            return m_instance;
-        }
-    }
-
-    /// <summary>
-    /// List of characters stored in database.
-    /// </summary>
-    [SerializeField]
-    private CharacterData[] m_characters;
-
-    /// <summary>
-    /// List of attacks stored in database.
-    /// </summary>
-    [SerializeField]
-    private AttackData[] m_attacks;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Database"/> class.
-    /// </summary>
-    public Database()
-    {
-        m_instance = this;
-        Debug.Log("constructor called");
-    }
-
-    /// <summary>
-    /// Gets the character data.
-    /// </summary>
-    /// <returns>The character data.</returns>
-    /// <param name="name">Name.</param>
-    public CharacterData GetCharacterData(CharacterId name)
-    {
-        if (((int)name) < m_characters.Length)
-        {
-            return m_characters[(int)name];
-        }
-
-        return null;
-    }
-
-    /// <summary>
-    /// Gets the attack data.
-    /// </summary>
-    /// <returns>The attack data.</returns>
-    /// <param name="name">Name.</param>
-    public AttackData GetAttackData(AttackName name)
-    {
-        if (((int)name) < m_attacks.Length)
-        {
-            return m_attacks[(int)name];
-        }
-
-        return null;
-    }
-}
+﻿using UnityEngine;
+using System.Collections;
+using System.Xml;
+using System.Xml.Serialization;
 
 /// <summary>
 /// Character name.
@@ -108,9 +40,93 @@ public enum AirshipId
 };
 
 /// <summary>
-/// Character data.
+/// Database.
 /// </summary>
 [System.Serializable]
+//public class Database : ScriptableObject
+public class Database
+{
+    /// <summary>
+    /// The static instance of the database.
+    /// </summary>
+//    private static Database m_instance = null;
+//    public static Database Instance
+//    {
+//        get
+//        {
+//            return m_instance;
+//        }
+//    }
+
+    /// <summary>
+    /// List of characters stored in database.
+    /// </summary>
+//    [SerializeField]
+    private CharacterData[] m_characters;
+
+    /// <summary>
+    /// List of attacks stored in database.
+    /// </summary>
+//    [SerializeField]
+    private AttackData[] m_attacks;
+
+//    [SerializeField]
+    private ItemData[] m_items;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Database"/> class.
+    /// </summary>
+    public Database()
+    {
+//        m_instance = this;
+//        Debug.Log("constructor called");
+    }
+
+    /// <summary>
+    /// Gets the character data.
+    /// </summary>
+    /// <returns>The character data.</returns>
+    /// <param name="name">Name.</param>
+    public CharacterData GetCharacterData(CharacterId name)
+    {
+        if (((int)name) < m_characters.Length)
+        {
+            return m_characters[(int)name];
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Gets the attack data.
+    /// </summary>
+    /// <returns>The attack data.</returns>
+    /// <param name="name">Name.</param>
+    public AttackData GetAttackData(AttackName name)
+    {
+        if (((int)name) < m_attacks.Length)
+        {
+            return m_attacks[(int)name];
+        }
+
+        return null;
+    }
+
+    public ItemData GetItemData(ItemId id)
+    {
+        if (((int)id) < m_items.Length)
+        {
+            return m_items[(int)id];
+        }
+
+        return null;
+    }
+}
+
+/// <summary>
+/// Character data.
+/// </summary>
+//[System.Serializable]
 public class CharacterData
 {
     public string m_name;
@@ -127,10 +143,16 @@ public class CharacterData
 /// <summary>
 /// Attack data.
 /// </summary>
-[System.Serializable]
+//[System.Serializable]
 public class AttackData
 {
     public string m_name;
     public GameObject m_prefab;
     public int m_damage;
+}
+
+public class ItemData
+{
+    public string m_name;
+    public Sprite m_icon;
 }

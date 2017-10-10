@@ -6,6 +6,8 @@ using UnityEngine;
 /// </summary>
 public class MissionController : MonoBehaviour
 {
+    public MissionUI m_missionUI;
+
     private MissionCharacter[] m_character;
     private MissionInventory m_inventory;
 
@@ -31,6 +33,8 @@ public class MissionController : MonoBehaviour
         {
             m_inventory = new MissionInventory(isd.m_items);
         }
+
+        m_missionUI.SetUpdateItems(m_inventory.m_equippedItems);
     }
 
 //    public bool m_playerControlled;

@@ -21,6 +21,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
+/*
 /// <summary>
 /// In editor menu items to create scriptable objects.
 /// </summary>
@@ -38,3 +39,4 @@ public class MakeScriptableObject : MonoBehaviour
 		Selection.activeObject = asset;
 	}
 }
+*/

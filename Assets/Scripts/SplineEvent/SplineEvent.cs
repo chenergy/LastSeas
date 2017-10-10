@@ -59,7 +59,7 @@ public class SplineEvent : MonoBehaviour
         }
     }
 
-    public void OnDrawGizmos()
+    public void OnDrawGizmosSelected()
     {
         try 
         {
