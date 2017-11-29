@@ -10,13 +10,14 @@ public class MissionInventory
     public MissionInventory(int[] items)
     {
         m_equippedItems = new Dictionary<ItemId, int>();
+        Debug.Log(items.Length);
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i] > 0)
-            {
+//            if (items[i] > 0)
+//            {
                 m_equippedItems.Add((ItemId)i, items[i]);
                 Debug.Log(string.Format("Adding {0} of {1} to inventory.", items[i], (ItemId)i));
-            }
+//            }
         }
     }
 }

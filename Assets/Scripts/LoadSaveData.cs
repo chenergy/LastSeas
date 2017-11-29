@@ -166,10 +166,10 @@ public class SaveFile
         m_inventory = new InventorySaveData();
 
         m_savedCharacterData = new CharacterSaveData[4];
-        m_savedCharacterData[0] = new CharacterSaveData(CharacterId.PICARD);
-        m_savedCharacterData[1] = new CharacterSaveData(CharacterId.LAFORGE);
-        m_savedCharacterData[2] = new CharacterSaveData(CharacterId.RIKER);
-        m_savedCharacterData[3] = new CharacterSaveData(CharacterId.WORF);
+        m_savedCharacterData[(int)CharacterId.PICARD] = new CharacterSaveData(CharacterId.PICARD);
+        m_savedCharacterData[(int)CharacterId.LAFORGE] = new CharacterSaveData(CharacterId.LAFORGE);
+        m_savedCharacterData[(int)CharacterId.RIKER] = new CharacterSaveData(CharacterId.RIKER);
+        m_savedCharacterData[(int)CharacterId.WORF] = new CharacterSaveData(CharacterId.WORF);
 
         m_currency = 0;
         m_dateLastSaved = DateTime.Today;

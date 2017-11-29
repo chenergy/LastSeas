@@ -32,9 +32,8 @@ public class MissionController : MonoBehaviour
         if (LoadSaveData.GetInventoryData(out isd))
         {
             m_inventory = new MissionInventory(isd.m_items);
+            m_missionUI.SetUpdateItems(m_inventory.m_equippedItems);
         }
-
-        m_missionUI.SetUpdateItems(m_inventory.m_equippedItems);
     }
 
 //    public bool m_playerControlled;

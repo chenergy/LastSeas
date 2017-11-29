@@ -1,97 +1,102 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 
 /// <summary>
-/// Character name.
-/// </summary>
-public enum CharacterId
-{ 
-    PICARD = 0, 
-    RIKER = 1, 
-    LAFORGE = 2, 
-    WORF = 3 
-};
-
-/// <summary>
-/// Attack name.
-/// </summary>
-public enum AttackName 
-{ 
-    BOMBARD
-};
-
-/// <summary>
-/// Item identifier.
-/// </summary>
-public enum ItemId
-{
-    NONE = 0,
-    BOMB = 1
-};
-
-/// <summary>
-/// Airship identifier.
-/// </summary>
-public enum AirshipId
-{
-    BASIC = 0
-};
-
-/// <summary>
 /// Database.
 /// </summary>
-[System.Serializable]
+//[System.Serializable]
 //public class Database : ScriptableObject
-public class Database
+public class Database : MonoBehaviour
 {
     /// <summary>
     /// The static instance of the database.
     /// </summary>
-//    private static Database m_instance = null;
-//    public static Database Instance
-//    {
-//        get
-//        {
-//            return m_instance;
-//        }
-//    }
+    public static Database Instance { get; private set; }
 
     /// <summary>
-    /// List of characters stored in database.
+    /// List of character data stored in database.
     /// </summary>
-//    [SerializeField]
-    private CharacterData[] m_characters;
+    public CharacterData[] m_characters;
 
     /// <summary>
-    /// List of attacks stored in database.
+    /// List of attack data stored in database.
     /// </summary>
-//    [SerializeField]
-    private AttackData[] m_attacks;
-
-//    [SerializeField]
-    private ItemData[] m_items;
+    public AttackData[] m_attacks;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Database"/> class.
+    /// List of item data stored in database.
     /// </summary>
-    public Database()
+    public ItemData[] m_items;
+
+    /// <summary>
+    /// List of airship data stored in database.
+    /// </summary>
+    public AirshipData m_airships;
+
+    /// <summary>
+    /// The dictionary of character data.
+    /// </summary>
+    private Dictionary<CharacterId, CharacterData> m_characterDict;
+
+    /// <summary>
+    /// The dictionary of attack data.
+    /// </summary>
+    private Dictionary<AttackId, AttackData> m_attackDict;
+
+    /// <summary>
+    /// The dictionary of item data.
+    /// </summary>
+    private Dictionary<ItemId, ItemData> m_itemDict;
+
+    /// <summary>
+    /// Awake this instance.
+    /// </summary>
+    public void Awake()
     {
-//        m_instance = this;
-//        Debug.Log("constructor called");
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        m_characterDict = new Dictionary<CharacterId, CharacterData>();
+        m_attackDict = new Dictionary<AttackId, AttackData>();
+        m_itemDict = new Dictionary<ItemId, ItemData>();
+
+        foreach (CharacterData c in m_characters)
+        {
+            m_characterDict.Add(c.m_id, c);
+        }
+
+        foreach (AttackData a in m_attacks)
+        {
+            m_attackDict.Add(a.m_id, a);
+        }
+
+        foreach (ItemData i in m_items)
+        {
+            m_itemDict.Add(i.m_id, i);
+        }
     }
 
     /// <summary>
     /// Gets the character data.
     /// </summary>
     /// <returns>The character data.</returns>
-    /// <param name="name">Name.</param>
-    public CharacterData GetCharacterData(CharacterId name)
+    /// <param name="id">Identifier.</param>
+    public CharacterData GetCharacterData(CharacterId id)
     {
-        if (((int)name) < m_characters.Length)
+        if (m_characterDict.ContainsKey(id))
         {
-            return m_characters[(int)name];
+            return m_characterDict[id];
         }
 
         return null;
@@ -101,22 +106,27 @@ public class Database
     /// Gets the attack data.
     /// </summary>
     /// <returns>The attack data.</returns>
-    /// <param name="name">Name.</param>
-    public AttackData GetAttackData(AttackName name)
+    /// <param name="id">Identifier.</param>
+    public AttackData GetAttackData(AttackId id)
     {
-        if (((int)name) < m_attacks.Length)
+        if (m_attackDict.ContainsKey(id))
         {
-            return m_attacks[(int)name];
+            return m_attackDict[id];
         }
 
         return null;
     }
 
+    /// <summary>
+    /// Gets the item data.
+    /// </summary>
+    /// <returns>The item data.</returns>
+    /// <param name="id">Identifier.</param>
     public ItemData GetItemData(ItemId id)
     {
-        if (((int)id) < m_items.Length)
+        if (m_itemDict.ContainsKey(id))
         {
-            return m_items[(int)id];
+            return m_itemDict[id];
         }
 
         return null;
@@ -126,11 +136,11 @@ public class Database
 /// <summary>
 /// Character data.
 /// </summary>
-//[System.Serializable]
+[System.Serializable]
 public class CharacterData
 {
-    public string m_name;
-    public bool m_unlocked;
+    public CharacterId m_id;
+    public string m_displayName;
     public Sprite m_icon;
     public int m_baseHealth;
     public int m_baseEnergy;
@@ -143,16 +153,34 @@ public class CharacterData
 /// <summary>
 /// Attack data.
 /// </summary>
-//[System.Serializable]
+[System.Serializable]
 public class AttackData
 {
-    public string m_name;
+    public AttackId m_id;
+    public string m_displayName;
     public GameObject m_prefab;
     public int m_damage;
 }
 
+/// <summary>
+/// Item data.
+/// </summary>
+[System.Serializable]
 public class ItemData
 {
-    public string m_name;
+    public ItemId m_id;
+    public string m_displayName;
     public Sprite m_icon;
 }
+
+/// <summary>
+/// Airship data.
+/// </summary>
+[System.Serializable]
+public class AirshipData
+{
+    public AirshipId m_id;
+    public string m_displayName;
+    public Sprite m_icon;
+}
+
