@@ -11,15 +11,15 @@ public class SplineBezier : BaseSpline
     public Transform m_c1;
     public Transform m_p1;
 
+    [Header("Debug")]
+    public SplineBezier m_adjustSpline;
+
     /// <summary>
     /// Raises the draw gizmos selected event.
     /// </summary>
-    public void OnDrawGizmosSelected()
+    public override void OnDrawGizmos()
     {
-        if (!CanBeDrawnInEditor())
-        {
-            return;
-        }
+        base.OnDrawGizmos();
 
         Color c = Gizmos.color;
 
@@ -77,6 +77,18 @@ public class SplineBezier : BaseSpline
 
         return ((t * t * v1) + (t * v2) + v3).magnitude;
 //        return increment / ((t * t * v1) + (t * v2) + v3).magnitude;
+    }
+
+    [ContextMenu("AdjustSpline")]
+    public void AdjustSpline()
+    {
+        if (m_adjustSpline == null)
+        {
+            return;
+        }
+
+        m_p0.position = m_adjustSpline.m_p1.position;
+        m_c0.position = m_p0.position + (m_adjustSpline.m_p1.position - m_adjustSpline.m_c1.position);
     }
 
     /// <summary>

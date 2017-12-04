@@ -7,9 +7,9 @@ using System.Collections;
 public class SplineFollower : MonoBehaviour
 {
     /// <summary>
-    /// The spline to follow.
+    /// The spline controller.
     /// </summary>
-    public BaseSpline m_spline;
+    public SplineController m_splineController;
 
     /// <summary>
     /// The follower speed along the spline.
@@ -41,29 +41,22 @@ public class SplineFollower : MonoBehaviour
     /// </summary>
     public delegate void SplineFollowerEvent(float tValue);
 
+    /// <summary>
+    /// Spline follower events.
+    /// </summary>
     public event SplineFollowerEvent OnStart;
-
     public event SplineFollowerEvent OnEnd;
+    public event SplineFollowerEvent OnUpdate;
 
     /// <summary>
-    /// Occurs when t value is updated.
+    /// The spline to follow.
     /// </summary>
-    public event SplineFollowerEvent OnUpdate;
+    public BaseSpline CurSpline { get; private set; }
 
     /// <summary>
     /// The current t value along the spline.
     /// </summary>
     private float m_tValue;
-
-//    /// <summary>
-//    /// The delta t per frame to move uniformly.
-//    /// </summary>
-//    private float m_deltaT;
-//
-//    /// <summary>
-//    /// The number of divisions in the spline used to calculate length.
-//    /// </summary>
-//    private int m_divisions = 1000;
 
     /// <summary>
     /// The current position of the transform.
@@ -71,26 +64,29 @@ public class SplineFollower : MonoBehaviour
     private Vector3 m_lastPos;
 
     /// <summary>
-    /// Whether the follower is currently following the spline.
+    /// Whether the follower is allowed to follow a spline.
     /// </summary>
     private bool m_followingEnabled = true;
 
+    /// <summary>
+    /// Whether the follower is currently following the spline.
+    /// </summary>
     private bool m_isFollowing = false;
+
+    /// <summary>
+    /// Awake this instance.
+    /// </summary>
+    public void Awake()
+    {
+        CurSpline = m_splineController.m_treeRoot.m_spline;
+    }
 
     /// <summary>
     /// Use this for initialization.
     /// </summary>
     public void Start()
     {
-//        float length = 0;
-//        for (int i = 0; i < m_divisions; i++)
-//        {
-//            length += Vector3.Distance(m_spline.GetPoint((i + 1) * 1.0f / m_divisions), m_spline.GetPoint(i * 1.0f / m_divisions));
-//        }
-//
-//        m_deltaT = 1.0f / length;
-
-        m_lastPos = m_spline.GetPoint(0);
+        m_lastPos = CurSpline.GetPoint(0);
         SetPositionOnSpline(0);
     }
 
@@ -104,7 +100,7 @@ public class SplineFollower : MonoBehaviour
             return;
         }
 
-        if (m_spline == null)
+        if (CurSpline == null)
         {
             return;
         }
@@ -123,9 +119,8 @@ public class SplineFollower : MonoBehaviour
                 m_isFollowing = true;
             }
 
-//            m_tValue += Time.deltaTime * m_deltaT * m_speed;
             float increment = Time.deltaTime * m_speed;
-            increment = increment / m_spline.GetDerivative(m_tValue);
+            increment = increment / CurSpline.GetDerivative(m_tValue);
             m_tValue += increment;
             m_tValue = Mathf.Clamp(m_tValue, 0.0f, 1.0f);
             lastPos = m_lastPos;
@@ -152,6 +147,11 @@ public class SplineFollower : MonoBehaviour
         }
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(m_splineController.m_treeRoot.m_spline.GetPoint(m_tValue), 1f);
+    }
+
     /// <summary>
     /// Sets whether the follower should start following.
     /// </summary>
@@ -168,7 +168,7 @@ public class SplineFollower : MonoBehaviour
     private void SetPositionOnSpline(float t)
     {
         // Set the new position.
-        Vector3 nextPos = m_spline.GetPoint(m_tValue);
+        Vector3 nextPos = CurSpline.GetPoint(m_tValue);
         transform.position = m_lastPos;
 
         // Set the new rotation.
@@ -185,6 +185,8 @@ public class SplineFollower : MonoBehaviour
     private void FindNextSpline()
     {
         m_isFollowing = false;
-        m_spline = null;
+        m_tValue = 0;
+//        CurSpline = null;
+        CurSpline = m_splineController.FindNextSpline();
     }
 }

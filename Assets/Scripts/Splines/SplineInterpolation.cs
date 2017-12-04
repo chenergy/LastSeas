@@ -68,8 +68,10 @@ public class SplineInterpolation : BaseSpline
     /// <summary>
     /// Raises the draw gizmos selected event.
     /// </summary>
-    public void OnDrawGizmosSelected()
+    public void OnDrawGizmos()
     {
+        base.OnDrawGizmos();
+
         for (int i = 0; i < m_knots.Length; i++)
         {
             Gizmos.DrawWireSphere(m_knots[i].position, 1f);

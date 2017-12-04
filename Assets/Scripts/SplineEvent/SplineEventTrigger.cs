@@ -16,12 +16,6 @@ public class SplineEventTrigger : MonoBehaviour
 
     public SplineFollower m_follower;
 
-    /// <summary>
-    /// The t value that triggers the event.
-    /// </summary>
-//    [Range(0f, 1f)]
-//    public float m_tValue;
-
     public UnityEvent m_onStart;
     public UnityEvent m_onEnd;
 
@@ -29,14 +23,6 @@ public class SplineEventTrigger : MonoBehaviour
     /// The event to trigger.
     /// </summary>
     public List<SplineEvent> m_events;
-
-//    private bool m_triggered = false;
-//    private bool m_started = false;
-
-    /// <summary>
-    /// The attached collider.
-    /// </summary>
-//    private Collider m_collider;
 
     /// <summary>
     /// Raises the enable event.
@@ -64,29 +50,11 @@ public class SplineEventTrigger : MonoBehaviour
     public void Start()
     {
         m_events.Sort();
-//        m_collider = GetComponent<Collider>();
-//        transform.position = m_spline.GetPoint(m_tValue);
     }
-	
-//    /// <summary>
-//    /// Update is called once per frame.
-//    /// </summary>
-//    public void Update()
-//    {
-//        if (m_triggered)
-//        {
-//            return;
-//        }
-//
-//        if (m_follower.m_spline == m_spline)
-//        {
-//            
-//        }
-//    }
 
     private void OnSplineStart(float t)
     {
-        if (m_follower.m_spline != m_spline)
+        if (m_follower.CurSpline != m_spline)
         {
             return;
         }
@@ -98,7 +66,7 @@ public class SplineEventTrigger : MonoBehaviour
 
     private void OnSplineEnd(float t)
     {
-        if (m_follower.m_spline != m_spline)
+        if (m_follower.CurSpline != m_spline)
         {
             return;
         }
@@ -110,7 +78,7 @@ public class SplineEventTrigger : MonoBehaviour
 
     private void OnSplineUpdate(float t)
     {
-        if (m_follower.m_spline != m_spline)
+        if (m_follower.CurSpline != m_spline)
         {
             return;
         }
@@ -141,9 +109,9 @@ public class SplineEventTrigger : MonoBehaviour
 
         Color c = Gizmos.color;
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(m_follower.m_spline.GetPoint(0f), Vector3.one);
+        Gizmos.DrawWireCube(m_spline.GetPoint(0f), Vector3.one);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(m_follower.m_spline.GetPoint(1f), Vector3.one);
+        Gizmos.DrawWireCube(m_spline.GetPoint(1f), Vector3.one);
         Gizmos.color = Color.white;
 
         for (int i = 0; i < m_events.Count; i++)
@@ -152,45 +120,6 @@ public class SplineEventTrigger : MonoBehaviour
         }
 
         Gizmos.color = c;
-    }
-
-    /// <summary>
-    /// Raises the trigger enter event.
-    /// </summary>
-    /// <param name="other">Other collider.</param>
-//    public void OnTriggerEnter(Collider other)
-//    {
-//        if (other.tag == "Player")
-//        {
-//            m_collider.enabled = false;
-//            m_event.Invoke();
-//        }
-//    }
-}
-
-[System.Serializable]
-public class SplineEvent : IComparable<SplineEvent>
-{
-    [Range(0f, 1f)]
-    public float m_tValue;
-    public UnityEvent m_event;
-
-    public int CompareTo(SplineEvent other)
-    {
-        if (other == null)
-        {
-            return 1;
-        }
-
-//        SplineEventt other = obj as SplineEventt;
-        if (other != null)
-        {
-            return m_tValue.CompareTo(other.m_tValue);
-        }
-        else
-        {
-            throw new ArgumentException("Object is not a SplineEvent");
-        }
     }
 }
 

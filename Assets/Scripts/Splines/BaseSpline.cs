@@ -46,7 +46,7 @@ public abstract class BaseSpline : MonoBehaviour
     /// <summary>
     /// Raises the draw gizmos event.
     /// </summary>
-    public void OnDrawGizmos()
+    public virtual void OnDrawGizmos()
     {
         if (!CanBeDrawnInEditor())
         {
