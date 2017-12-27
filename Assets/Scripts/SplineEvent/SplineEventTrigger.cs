@@ -10,13 +10,23 @@ using System.Collections.Generic;
 public class SplineEventTrigger : MonoBehaviour
 {
     /// <summary>
-    /// The spline to trigger the event.
+    /// The spline the event is attached to.
     /// </summary>
     public BaseSpline m_spline;
 
+    /// <summary>
+    /// The follower that will trigger the event.
+    /// </summary>
     public SplineFollower m_follower;
 
+    /// <summary>
+    /// The event triggered on start.
+    /// </summary>
     public UnityEvent m_onStart;
+
+    /// <summary>
+    /// The event triggered on end.
+    /// </summary>
     public UnityEvent m_onEnd;
 
     /// <summary>

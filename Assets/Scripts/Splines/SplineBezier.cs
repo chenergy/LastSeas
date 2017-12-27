@@ -90,12 +90,5 @@ public class SplineBezier : BaseSpline
         m_p0.position = m_adjustSpline.m_p1.position;
         m_c0.position = m_p0.position + (m_adjustSpline.m_p1.position - m_adjustSpline.m_c1.position);
     }
-
-    /// <summary>
-    /// Setup the points if pre-calculation is necessary.
-    /// </summary>
-    protected override void SetupPoints()
-    {
-    }
 }
 

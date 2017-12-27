@@ -14,6 +14,11 @@ public class SplineTreeNode : MonoBehaviour
     public BaseSpline m_spline;
 
     /// <summary>
+    /// The assigned parent of this node.
+    /// </summary>
+    public SplineTreeNode m_parent;
+
+    /// <summary>
     /// The children for this node.
     /// </summary>
     public SplineTreeNode[] m_children;

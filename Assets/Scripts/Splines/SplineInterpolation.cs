@@ -68,7 +68,7 @@ public class SplineInterpolation : BaseSpline
     /// <summary>
     /// Raises the draw gizmos selected event.
     /// </summary>
-    public void OnDrawGizmos()
+    public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 
@@ -85,7 +85,17 @@ public class SplineInterpolation : BaseSpline
     /// <c>false</c>
     public override bool CanBeDrawnInEditor()
     {
-        return (m_showSplineInEditor && (m_xCubics != null) && !Application.isPlaying || (m_knots.Length > 0));
+        if ((!m_showSplineInEditor) || (m_knots.Length == 0))
+        {
+            return false;
+        }
+
+        if (m_xCubics == null)
+        {
+            SetupPoints();
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -133,7 +143,7 @@ public class SplineInterpolation : BaseSpline
     /// <summary>
     /// Setup the points if pre-calculation is necessary.
     /// </summary>
-    protected override void SetupPoints()
+    private void SetupPoints()
     {
         this.m_points = new List<Vector3>();
         this.m_xCubics = new List<Cubic>();

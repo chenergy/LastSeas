@@ -22,6 +22,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private float m_eulerZ;
     private MissionUI m_ui;
+    private Coroutine m_speedupRoutine;
+    private bool m_isSpeedup = false;
 
     public void Start()
     {
@@ -34,29 +36,35 @@ public class Player : MonoBehaviour, IDamageable
     /// </summary>
     public void Update()
     {
+        // Set new position based on aim target.
         float step = m_maxMoveDelta * Time.deltaTime;
         Vector3 screenTargetPosition = Camera.main.WorldToScreenPoint(m_aimTarget.m_farTarget.position);
         Vector3 localTargetPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenTargetPosition.x, screenTargetPosition.y, -Camera.main.transform.localPosition.z));
         transform.position = Vector3.Lerp(transform.position, localTargetPosition, step);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
 
+        // Set new rotation based on aim target.
         transform.rotation = Quaternion.LookRotation(m_aimTarget.m_farTarget.position - transform.position, Vector3.up);
         Vector3 euler = transform.localRotation.eulerAngles;
         m_eulerZ = Mathf.Lerp(m_eulerZ, -Input.GetAxis("Horizontal") * 45, Time.deltaTime * 5);
         transform.localRotation = Quaternion.Euler(euler.x, euler.y, m_eulerZ);
 
+        // Fire weapon.
         if (Input.GetButtonDown("Fire1"))
         {
             Projectile projectile = Instantiate(m_projectile).GetComponent<Projectile>();
             projectile.transform.position = m_bow.transform.position;
             projectile.transform.forward = m_bow.transform.forward;
-            projectile.SetTargetTag("Enemy");
-//            GameObject gobj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-//            gobj.transform.position = m_bow.transform.position;
-//            gobj.GetComponent<Collider>().isTrigger = true;
-//            Rigidbody rb = gobj.AddComponent<Rigidbody>();
-//            rb.useGravity = false;
-//            rb.velocity = m_bow.transform.forward * 50;
+            projectile.SetTarget("EnemyCollider");
+        }
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (m_speedupRoutine != null)
+            {
+                StopCoroutine(m_speedupRoutine);
+            }
+
+            m_speedupRoutine = StartCoroutine(_SpeedupRoutine());
         }
     }
 
@@ -75,6 +83,18 @@ public class Player : MonoBehaviour, IDamageable
     public void DestroySelf()
     {
         Debug.Log("Player Destroyed");
+    }
+
+    private IEnumerator _SpeedupRoutine()
+    {
+        m_isSpeedup = true;
+        m_maxMoveDelta *= 10;
+        m_aimTarget.m_screenMoveScale *= 10;
+        yield return new WaitForSeconds(0.5f);
+        m_isSpeedup = false;
+        m_maxMoveDelta /= 10;
+        m_aimTarget.m_screenMoveScale /= 10;
+        m_speedupRoutine = null;
     }
 }
 

@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 10378266}
+  m_parent: {fileID: 1733907346}
   m_children: []
 --- !u!114 &10378266
 MonoBehaviour:
@@ -476,9 +477,9 @@ GameObject:
   - component: {fileID: 197857673}
   - component: {fileID: 197857672}
   - component: {fileID: 197857671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Turret
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2297,6 +2298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 870440743}
+  m_parent: {fileID: 0}
   m_children: []
 --- !u!1 &901447853
 GameObject:
@@ -3712,9 +3714,9 @@ GameObject:
   - component: {fileID: 1409044507}
   - component: {fileID: 1409044506}
   - component: {fileID: 1409044508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Dragon
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4168,7 +4170,7 @@ GameObject:
   - component: {fileID: 1549202881}
   - component: {fileID: 1549202879}
   - component: {fileID: 1549202878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4787,6 +4789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 1733907345}
+  m_parent: {fileID: 0}
   m_children:
   - {fileID: 1745849585}
   - {fileID: 10378265}
@@ -4940,6 +4943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 1745849584}
+  m_parent: {fileID: 1733907346}
   m_children: []
 --- !u!1 &1758705301
 GameObject:
@@ -5015,9 +5019,9 @@ GameObject:
   - component: {fileID: 1779895573}
   - component: {fileID: 1779895572}
   - component: {fileID: 1779895574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Kamikaze
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5333,6 +5337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spline: {fileID: 1951656650}
+  m_parent: {fileID: 0}
   m_children: []
 --- !u!1 &1953309476
 GameObject:

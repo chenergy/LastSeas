@@ -69,7 +69,7 @@ public class Turret : BaseEnemy
     public void Fire()
     {
         Projectile projectile = Instantiate(m_projectile).GetComponent<Projectile>();
-        projectile.SetTargetTag("Player");
+        projectile.SetTarget("PlayerCollider");
         projectile.transform.position = m_barrel.transform.position;
         projectile.transform.forward = m_barrel.transform.forward;
     }

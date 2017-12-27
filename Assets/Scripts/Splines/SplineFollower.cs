@@ -147,9 +147,15 @@ public class SplineFollower : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Raises the draw gizmos event.
+    /// </summary>
     public void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(m_splineController.m_treeRoot.m_spline.GetPoint(m_tValue), 1f);
+        if (m_splineController.m_treeRoot.m_spline.CanBeDrawnInEditor())
+        {
+            Gizmos.DrawSphere(m_splineController.m_treeRoot.m_spline.GetPoint(m_tValue), 1f);
+        }
     }
 
     /// <summary>
@@ -182,6 +188,9 @@ public class SplineFollower : MonoBehaviour
         m_lastPos = nextPos;
     }
 
+    /// <summary>
+    /// Determine which spline to follow.
+    /// </summary>
     private void FindNextSpline()
     {
         m_isFollowing = false;

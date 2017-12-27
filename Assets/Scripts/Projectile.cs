@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public float m_speed = 5f;
 
     private Collider m_collider;
-    private string m_targetTag;
+    private LayerMask m_targetLayers;
 
     public void Awake()
     {
@@ -33,7 +33,8 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == m_targetTag)
+        int otherLayer = (1 << other.gameObject.layer);
+        if ((otherLayer & m_targetLayers.value) == otherLayer)
         {
             IDamageable target = other.GetComponent<IDamageable>();
             target.TakeDamage(m_damage);
@@ -46,9 +47,10 @@ public class Projectile : MonoBehaviour
         Physics.IgnoreCollision(m_collider, other);
     }
 
-    public void SetTargetTag(string tag)
+    public void SetTarget(string layerName)
     {
-        m_targetTag = tag;
+        int layer = LayerMask.NameToLayer(layerName);
+        m_targetLayers = m_targetLayers | (1 << layer);
     }
 
     private void Move()

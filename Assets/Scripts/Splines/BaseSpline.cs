@@ -39,11 +39,6 @@ public abstract class BaseSpline : MonoBehaviour
     public abstract float GetDerivative(float t);
 
     /// <summary>
-    /// Setup the points if pre-calculation is necessary.
-    /// </summary>
-    protected abstract void SetupPoints();
-
-    /// <summary>
     /// Raises the draw gizmos event.
     /// </summary>
     public virtual void OnDrawGizmos()
@@ -53,7 +48,6 @@ public abstract class BaseSpline : MonoBehaviour
             return;
         }
 
-        SetupPoints();
         for (int i = 0; i < m_divisionsInEditor; i++)
         {
             Gizmos.DrawLine(GetPoint(1.0f * i / m_divisionsInEditor), GetPoint(1.0f * (i + 1) / m_divisionsInEditor));
